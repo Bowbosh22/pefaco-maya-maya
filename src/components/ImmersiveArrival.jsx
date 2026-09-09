@@ -46,7 +46,7 @@ const CHAPTERS = [
   {
     id: 'final',
     navLabel: null,
-    image: 'https://images.unsplash.com/photo-1444201983204-c43cbd584d93?w=1800&q=80',
+    image: 'https://images.unsplash.com/photo-1731336478850-6bce7235e320?w=1800&q=80',
     content: {
       type: 'cta', tag: 'V — RÉSERVATION', top: 'VOTRE CHAMBRE', bot: 'VOUS ATTEND', pos: 'center',
     },
