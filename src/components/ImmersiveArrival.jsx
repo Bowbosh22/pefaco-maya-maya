@@ -46,7 +46,7 @@ const CHAPTERS = [
   {
     id: 'final',
     navLabel: null,
-    image: '/assets/chambre-vue-salon.jpg',
+    image: 'https://images.unsplash.com/photo-1444201983204-c43cbd584d93?w=1800&q=80',
     content: {
       type: 'cta', tag: 'V — RÉSERVATION', top: 'VOTRE CHAMBRE', bot: 'VOUS ATTEND', pos: 'center',
     },
@@ -198,7 +198,7 @@ export default function ImmersiveArrival() {
   const current = CHAPTERS[currentIdx]
 
   return (
-    <div ref={wrapRef} style={{ height: `${CHAPTERS.length * 115}vh` }} aria-label="Présentation immersive de l'hôtel">
+    <div ref={wrapRef} style={{ height: `${CHAPTERS.length * 190}vh` }} aria-label="Présentation immersive de l'hôtel">
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', background: 'var(--espresso)' }}>
 
         {CHAPTERS.map((c, i) => (
