@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import WhatsAppFloat from './components/WhatsAppFloat'
 import Home from './pages/Home'
 import Chambres from './pages/Chambres'
 import ChambreDetails from './pages/ChambreDetails'
@@ -25,6 +26,7 @@ function AppContent() {
         <Route path="/chambres/:slug" element={<ChambreDetails />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+            <WhatsAppFloat />
       <WhatsAppFloat />
     </>
   )
