@@ -77,7 +77,7 @@ export default function Navbar() {
 
       <style>{`
         @media (max-width: 860px) {
-          .nav-desktop { display: none; }
+          .nav-desktop { display: none !important; }
           .nav-burger { display: flex !important; }
         }
       `}</style>
