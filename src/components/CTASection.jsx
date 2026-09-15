@@ -18,6 +18,14 @@ export default function CTASection() {
       </p>
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
         <a href="tel:+242056048030" className="btn-solid btn-gold">Appeler l'hôtel</a>
+        <a
+          href="https://wa.me/242056048030?text=Bonjour%2C%20je%20souhaite%20réserver%20une%20chambre%20à%20l'hôtel%20Pefaco%20Maya-Maya."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-outline btn-outline-light"
+        >
+          WhatsApp
+        </a>
         <a href="/contact" className="btn-outline btn-outline-light">Voir les coordonnées</a>
       </div>
     </section>
