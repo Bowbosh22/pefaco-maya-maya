@@ -7,6 +7,7 @@ import ChambreDetails from './pages/ChambreDetails'
 import Reservation from './pages/Reservation'
 import Restaurant from './pages/Restaurant'
 import Contact from './pages/Contact'
+import { ReservationDraftProvider } from './context/ReservationDraftContext'
 
 // HashRouter est conservé volontairement : GitHub Pages ne sait pas router
 // des chemins comme /maya-maya/chambres côté serveur (404 sur un refresh),
@@ -31,7 +32,9 @@ function AppRoutes() {
 export default function App() {
   return (
     <HashRouter>
-      <AppRoutes />
+      <ReservationDraftProvider>
+        <AppRoutes />
+      </ReservationDraftProvider>
     </HashRouter>
   )
 }

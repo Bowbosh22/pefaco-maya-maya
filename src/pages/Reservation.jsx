@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
+import { useReservationDraft } from '../context/ReservationDraftContext'
 import { findRoomBySlug } from '../data/hotels'
 import GuestCounterRow from '../components/GuestCounterRow'
 import {
@@ -25,6 +26,7 @@ export default function Reservation() {
   const hotel = useHotel()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
+  const { saveDraft, clearDraft } = useReservationDraft()
   const [step, setStep] = useState(1)
   const [form, setForm] = useState(() => buildInitialReservationForm(hotel, searchParams))
   const [memberView, setMemberView] = useState(false)
@@ -43,6 +45,23 @@ export default function Reservation() {
   const nights = nightsBetween(form.arrival, form.departure)
   const closeReservation = () => navigate(`/${hotel.slug}`)
   const hasDates = !!(form.arrival && form.departure)
+
+  // Dès que la demande contient des dates ou une chambre, on la garde en
+  // mémoire pour pouvoir la rappeler au visiteur s'il quitte cette page sans
+  // avoir envoyé sa demande (bannière de rappel affichée sur les autres pages).
+  useEffect(() => {
+    if (confirmed) return
+    if (!hasDates && !form.room) return
+    saveDraft(hotel.slug, {
+      arrival: form.arrival,
+      departure: form.departure,
+      adults: form.adults,
+      children: form.children,
+      roomSlug: form.room,
+      roomName: selectedRoom ? selectedRoom.name : null,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hotel.slug, form.arrival, form.departure, form.adults, form.children, form.room, confirmed])
   const selectRoom = (slug) => {
     setForm((prev) => ({ ...prev, room: slug }))
     setStep(3)
@@ -445,6 +464,7 @@ export default function Reservation() {
                 e.preventDefault()
                 window.location.href = mailtoHref
                 setConfirmed(true)
+                clearDraft()
               }}
               style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
             >
@@ -492,7 +512,10 @@ export default function Reservation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-outline"
-                    onClick={() => setConfirmed(true)}
+                    onClick={() => {
+                      setConfirmed(true)
+                      clearDraft()
+                    }}
                   >
                     Envoyer via WhatsApp
                   </a>

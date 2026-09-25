@@ -4,6 +4,7 @@ import { HotelProvider } from '../context/HotelContext'
 import Navbar from '../components/Navbar'
 import ScrollToTop from '../components/ScrollToTop'
 import WhatsAppFloat from '../components/WhatsAppFloat'
+import ReservationReminderBanner from '../components/ReservationReminderBanner'
 
 export default function HotelLayout() {
   const { hotel: slug } = useParams()
@@ -17,6 +18,7 @@ export default function HotelLayout() {
       <ScrollToTop />
       <Outlet />
       <WhatsAppFloat />
+      <ReservationReminderBanner />
     </HotelProvider>
   )
 }
