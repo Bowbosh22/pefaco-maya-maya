@@ -93,6 +93,22 @@ et pour ceux qui veulent prendre leur temps.`,
     heritageText:
       "Le Pefaco hôtel Maya-Maya est un véritable havre de luxe, situé en plein cœur de Brazzaville, en République du Congo. Alliant histoire riche, architecture moderne, décorations culturelles et services incomparables, nous offrons à nos clients un havre de paix exclusif.\n\nGrâce à des installations modernes et à notre engagement envers l'excellence, nous offrons une expérience inoubliable à chacun de nos visiteurs.",
     heritageImage: mmHeritageNight,
+    // Onglet « Salles & Événements » — grille tarifaire officielle de la
+    // plaquette Pefaco (28/09/2026), reprise telle quelle (« XAF » renommé
+    // « FCFA » pour rester cohérent avec le reste du site — même monnaie).
+    // Champ propre à Maya-Maya : sa seule présence détermine l'affichage du
+    // lien dans la barre de navigation (voir Navbar.jsx).
+    venues: [
+      { name: 'Moringa', ceremonyCapacity: '220 pers.', ceremonyPrice: '1 300 000 FCFA', conferenceCapacity: '300 pers.', conferencePrice: '1 300 000 FCFA' },
+      { name: 'Bistro parisien', ceremonyCapacity: '180 pers.', ceremonyPrice: '1 500 000 FCFA', conferenceCapacity: null, conferencePrice: null },
+      { name: 'Sangha', ceremonyCapacity: null, ceremonyPrice: null, conferenceCapacity: '10 pers.', conferencePrice: '100 000 FCFA' },
+      { name: 'Kongo', ceremonyCapacity: null, ceremonyPrice: null, conferenceCapacity: '30 pers.', conferencePrice: '250 000 FCFA' },
+      { name: 'Alima', ceremonyCapacity: null, ceremonyPrice: null, conferenceCapacity: '24 pers.', conferencePrice: '250 000 FCFA' },
+      { name: 'Oubangui-Djoué', ceremonyCapacity: '100/130 pers.', ceremonyPrice: '300 000 FCFA', conferenceCapacity: '100/130 pers.', conferencePrice: '300 000 FCFA' },
+      { name: 'Terrasse Piscine MBONGUI', ceremonyCapacity: '500 pers.', ceremonyPrice: '1 500 000 FCFA', conferenceCapacity: '500 pers.', conferencePrice: null },
+      { name: 'Terrasse Moringa', ceremonyCapacity: '80 pers.', ceremonyPrice: '150 000 FCFA', conferenceCapacity: null, conferencePrice: null },
+      { name: 'Restaurant Bochelli', ceremonyCapacity: '30 pers.', ceremonyPrice: 'À définir', conferenceCapacity: null, conferencePrice: null },
+    ],
     rooms: [
       {
         id: 1,

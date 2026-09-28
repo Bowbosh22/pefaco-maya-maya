@@ -27,6 +27,7 @@ export default function Navbar() {
     // N'apparaît que pour les hôtels ayant reçu ce contenu (Maya-Maya, via sa
     // plaquette officielle du 28/09/2026) — voir hotels.js.
     ...(hotel.heritageText ? [{ to: `${base}/heritage`, label: hotel.heritageTitle || `L'Héritage ${hotel.shortName}` }] : []),
+    ...(hotel.venues ? [{ to: `${base}/salles-evenements`, label: 'Salles & Événements' }] : []),
     { to: `${base}/contact`, label: 'Contact' },
   ]
   const reservationLink = `${base}/reservation`
