@@ -109,6 +109,108 @@ et pour ceux qui veulent prendre leur temps.`,
       { name: 'Terrasse Moringa', ceremonyCapacity: '80 pers.', ceremonyPrice: '150 000 FCFA', conferenceCapacity: null, conferencePrice: null },
       { name: 'Restaurant Bochelli', ceremonyCapacity: '30 pers.', ceremonyPrice: 'À définir', conferenceCapacity: null, conferencePrice: null },
     ],
+    // Onglet « Menu événementiel » — contenu officiel de la plaquette Pefaco
+    // (28/09/2026), repris tel quel. Champ propre à Maya-Maya : sa seule
+    // présence détermine l'affichage du lien dans la barre de navigation
+    // (voir Navbar.jsx).
+    // Point de vigilance : la section « Plats Chauds » du Menu A est reprise
+    // telle qu'imprimée dans la plaquette (retour à la ligne visiblement
+    // fusionné entre plusieurs plats — ex. « Gamberie Filet de Bar » /
+    // « encroute Missalas du Chef ») — à faire confirmer par Pefaco plutôt
+    // que deviné.
+    eventMenu: {
+      tableMenus: [
+        {
+          label: 'Menu A',
+          sections: [
+            { title: 'Entrées', items: ['Carpaccio de Bar', 'Poulpe à la pomme de terre', 'Poulpe grillé', "Parmegiana d'aubergine", 'Soupes de légume', 'Salade de tomates, œufs, laitue', 'Salade de crudités (concombres, tomates, poivrons, maïs, œufs durs, carotte et huile d\'olive)'] },
+            { title: 'Plats chauds', items: ['Pizza végétarienne', 'Linguine', 'Gamberie', 'Filet de Bar en croûte', 'Missalas du Chef', 'Côte de porc', "Filet de Bœuf d'Alima", "Gigot d'agneau"] },
+            { title: 'Desserts', items: ['Glaces', "Tiramisu à l'italienne", 'Assiette de fruits'] },
+            { title: 'Accompagnements', items: ['Riz', 'Manioc', 'Banane plantain ou vapeur', 'Banane frite ou frite de pomme de terre', 'Foufou ou légumes vapeur'] },
+            { title: 'Boissons', items: ['Café Expresso', 'Café au lait', 'Tonic', 'Coca / Coca Zéro', 'Cristal', 'Eau minérale'] },
+          ],
+        },
+        {
+          label: 'Menu B',
+          sections: [
+            { title: 'Entrées', items: ['Salade César', 'ou Salade mixte au thon (laitue, tomate, choux, maïs, poivron)'] },
+            { title: 'Plats chauds', items: ['Poisson sole grillé, ou poisson salé aux aubergines', 'ou Blanc de poulet avec sauce aux champignons', 'ou Émincé de bœuf avec sauce tomate'] },
+            { title: 'Desserts', items: ['Assiette de fruits'] },
+            { title: 'Accompagnements', items: ['Riz', 'Manioc', 'Banane plantain ou vapeur', 'Banane frite ou frite de pomme de terre', 'Foufou ou légumes vapeur'] },
+          ],
+        },
+      ],
+      tableMenuPricing: [
+        { label: 'Menu n°1 (2 propositions)', price: '26 000 FCFA' },
+        { label: 'Menu n°2 (2 propositions)', price: '31 000 FCFA' },
+        { label: 'Menu n°3 (2 propositions)', price: '36 000 FCFA' },
+        { label: 'Menu n°4 (2 propositions)', price: '41 000 FCFA' },
+        { label: 'Menu n°5 (2 propositions)', price: '51 000 FCFA' },
+      ],
+      buffets: [
+        {
+          label: 'Buffet n°1',
+          price: '20 000 FCFA',
+          sections: [
+            { title: 'Entrées', items: ['Assortiment de crudités (carottes râpées, tomates, concombres, poivrons) avec leurs sauces', 'Salade de pommes de terre au thon et œufs durs', 'Salade de poulet au curry, raisins secs et ananas'] },
+            { title: 'Plats chauds', items: ['Cuisses de poulet frit', 'Poisson salé aux aubergines', 'Saka saka au poisson fumé'] },
+            { title: 'Desserts', items: ['Assiette de fruits coupés', 'Assortiment de pâtisseries'] },
+            { title: 'Accompagnements', items: ['Banane plantain', 'Riz blanc parfumé à la coriandre', 'Patate douce rôtie avec une touche de piment doux', 'Pain de manioc ou moungouélé'] },
+          ],
+        },
+        {
+          label: 'Buffet n°2',
+          price: '26 000 FCFA',
+          sections: [
+            { title: 'Entrées', items: ['Assortiment de crudités (carottes râpées, concombres, tomates, poivrons) avec leurs sauces', 'Salade de pommes de terre au thon et œufs durs', 'Salade de poulet au curry, raisins secs et ananas', 'Salade de méchoui façon tunisienne'] },
+            { title: 'Plats chauds', items: ['Cuisses de poulet frit', 'Bœuf Bourguignon', 'Poisson salé aux aubergines', 'Saka saka au poisson fumé'] },
+            { title: 'Desserts', items: ['Assiette de fruits coupés', 'Assortiment de pâtisseries'] },
+            { title: 'Accompagnements', items: ['Banane plantain', 'Riz blanc parfumé à la coriandre', 'Patate douce rôtie avec une touche de piment doux', 'Pain de manioc ou moungouélé'] },
+          ],
+        },
+        {
+          label: 'Buffet n°3',
+          price: '29 000 FCFA',
+          sections: [
+            { title: 'Entrées', items: ['Assortiment de crudités (carottes râpées, tomates, concombres, poivrons) avec leurs sauces', 'Salade de pommes de terre au thon et œufs durs', 'Salade de poulet au curry, raisins secs et ananas', 'Salade de méchoui façon tunisienne', 'Accras de patate douce et plantains épicés'] },
+            { title: 'Plats chauds', items: ['Cuisses de poulet frit', 'Poisson salé aux aubergines', 'Bœuf Bourguignon', 'Maboké aux Mabongo', 'Saka saka au poisson fumé'] },
+            { title: 'Desserts', items: ['Assiette de fruits coupés', 'Assortiment de pâtisseries', 'Tiramisu maison'] },
+            { title: 'Accompagnements', items: ['Banane plantain', 'Riz blanc parfumé à la coriandre', 'Patate douce rôtie avec une touche de piment doux', 'Pain de manioc ou moungouélé'] },
+          ],
+        },
+        {
+          label: 'Buffet n°4',
+          price: '32 000 FCFA',
+          sections: [
+            { title: 'Entrées', items: ['Assortiment de crudités (carottes râpées, concombres, tomates, poivrons) avec leurs sauces', 'Salade niçoise', 'Salade de poulet au curry, raisins secs et ananas', 'Gazpacho (soupe froide à la tomate)', 'Accras de patate douce et plantains épicés', 'Assortiment de charcuterie'] },
+            { title: 'Plats chauds', items: ['Lasagne bolognaise', 'Bœuf Bourguignon', 'Mouton rôti', 'Maboké aux Mabongo', 'Poisson salé aux aubergines', 'Saka saka au poisson fumé'] },
+            { title: 'Desserts', items: ['Assiette de fruits coupés', 'Assortiment de pâtisseries', 'Tiramisu maison', 'Variété de mousses, cheese-cake aux fruits rouges'] },
+            { title: 'Accompagnements', items: ['Riz blanc parfumé à la coriandre', 'Patate douce rôtie avec une touche de piment doux', 'Banane plantain', 'Pain de manioc ou moungouélé', 'Semoule à la vapeur et ses légumes', "Pommes de terre sautées à l'ail"] },
+          ],
+        },
+        {
+          label: 'Buffet n°5',
+          price: '49 000 FCFA',
+          sections: [
+            { title: 'Entrées', items: ['Assortiment de crudités (carottes râpées, tomates, concombres, poivrons) avec leurs sauces', 'Foie gras et ses toasts', 'Salade de poulet au curry, raisins secs et ananas', 'Salade papayes vertes à la langouste et aux crevettes', 'Saumon fumé', 'Assortiment de charcuterie française et italienne'] },
+            { title: 'Plats chauds', items: ['Lasagnes aux fruits de mer', 'Filet de bœuf sauce au parfum des sous-bois', 'Fricassée de poulet à la crème d\'ail', 'Mouton rôti', "Gambas flambées à l'anis", 'Filet de Capitaine avec sa sauce provençale'] },
+            { title: 'Desserts', items: ['Assiette de fruits coupés', 'Assortiment de pâtisseries', 'Tiramisu maison', 'Variété de mousses, cheese-cake aux fruits rouges', 'Crêpes Suzette'] },
+            { title: 'Accompagnements', items: ['Riz blanc parfumé à la coriandre', 'Légumes variés à la vapeur', 'Gratin de patates douces', 'Semoule à la vapeur et ses légumes', "Pommes de terre sautées à l'ardéchoise"] },
+          ],
+        },
+      ],
+      extras: [
+        { label: 'Pause-café Gourmande (matin ou après-midi)', unit: 'par personne, par pause café', price: '8 000 FCFA' },
+        { label: 'Pause-café Maya Maya (matin ou après-midi)', unit: 'par personne, par pause café', price: '10 000 FCFA' },
+        { label: 'Open Bar — Option 1 : boissons locales non alcoolisées (eau, sodas, jus)', unit: 'par personne, pour 90 min', price: '8 000 FCFA' },
+        { label: 'Open Bar — Option 2 : canapés salés + boissons non alcoolisées + bière locale', unit: 'par personne, pour 90 min', price: '15 000 FCFA' },
+        { label: 'Open Bar — Option 3 : Option 2 + alcools importés (whisky, gin, pastis, martini...)', unit: 'par personne, pour 90 min', price: '18 000 FCFA' },
+        { label: 'Cocktail déjeunatoire', unit: 'par personne, hors boisson', price: '25 000 FCFA' },
+        { label: 'Cocktail dînatoire', unit: 'par personne, hors boisson', price: '30 000 FCFA' },
+        { label: 'Goûter n°1', unit: 'par personne, boisson incluse', price: '20 000 FCFA' },
+        { label: 'Goûter n°2', unit: 'par personne, boisson incluse', price: '30 000 FCFA' },
+      ],
+    },
     rooms: [
       {
         id: 1,

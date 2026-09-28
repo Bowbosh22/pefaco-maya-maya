@@ -28,6 +28,7 @@ export default function Navbar() {
     // plaquette officielle du 28/09/2026) — voir hotels.js.
     ...(hotel.heritageText ? [{ to: `${base}/heritage`, label: hotel.heritageTitle || `L'Héritage ${hotel.shortName}` }] : []),
     ...(hotel.venues ? [{ to: `${base}/salles-evenements`, label: 'Salles & Événements' }] : []),
+    ...(hotel.eventMenu ? [{ to: `${base}/menu-evenementiel`, label: 'Menu événementiel' }] : []),
     { to: `${base}/contact`, label: 'Contact' },
   ]
   const reservationLink = `${base}/reservation`
