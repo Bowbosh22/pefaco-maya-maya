@@ -26,6 +26,10 @@ import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
 import mmSuiteLuxeMinisterielle from '../assets/images/maya-maya-suite-luxe-ministerielle.jpg'
 import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin.jpg'
 import mmHeritageNight from '../assets/images/maya-maya-heritage-night.jpg'
+import mmActivitesExpositions from '../assets/images/maya-maya-activites-expositions.jpg'
+import mmActivitesTennis from '../assets/images/maya-maya-activites-tennis.jpg'
+import mmActivitesSoirees from '../assets/images/maya-maya-activites-soirees.jpg'
+import mmActivitesGym from '../assets/images/maya-maya-activites-gym.jpg'
 
 export const hotels = [
   {
@@ -210,6 +214,63 @@ et pour ceux qui veulent prendre leur temps.`,
         { label: 'Goûter n°1', unit: 'par personne, boisson incluse', price: '20 000 FCFA' },
         { label: 'Goûter n°2', unit: 'par personne, boisson incluse', price: '30 000 FCFA' },
       ],
+    },
+    // Onglet « Activités » — contenu et visuels repris de la plaquette
+    // officielle Pefaco (28/09/2026), page « 05 Autres activités ».
+    activities: {
+      // Photo d'ambiance pour l'en-tête éditorial de la page (voir Activites.jsx) —
+      // même image que « Soirées privées » ci-dessous, recadrée différemment.
+      heroImage: mmActivitesSoirees,
+      amenities: [
+        {
+          label: "Expositions d'art",
+          image: mmActivitesExpositions,
+          description: "Le lobby accueille régulièrement artistes et collectionneurs, le temps d'un vernissage ou d'une exposition éphémère.",
+        },
+        {
+          label: 'Terrain de tennis',
+          image: mmActivitesTennis,
+          description: "Un terrain sur place pour commencer la journée par un service, ou la finir par un match sous les lumières.",
+        },
+        {
+          label: 'Soirées privées',
+          image: mmActivitesSoirees,
+          description: "Terrasses dressées et éclairage d'ambiance : l'hôtel se transforme, le temps d'un événement, en décor sur mesure.",
+        },
+        {
+          label: 'Salle de gym',
+          image: mmActivitesGym,
+          description: 'Équipements cardio et musculation, accessibles à toute heure pour les hôtes qui ne font pas de pause.',
+        },
+      ],
+      happyHours: [
+        {
+          day: 'Jeudis',
+          hours: '18h – 20h',
+          music: 'DJ Peter',
+          perks: ['2 cocktails achetés, 1 cocktail offert', '1 Beaufort acheté, 1 Beaufort offert', 'Tombola — plusieurs lots à gagner'],
+        },
+        {
+          day: 'Vendredis',
+          hours: null,
+          music: 'Music Live Performance',
+          perks: ['2 cocktails achetés, 1 cocktail offert', '1 Beaufort acheté, 1 Beaufort offert', 'Tombola — plusieurs lots à gagner'],
+        },
+        {
+          day: 'Samedis',
+          hours: '18h – 22h',
+          music: 'DJ Peter',
+          perks: ['2 cocktails achetés, 1 cocktail offert', '1 Beaufort acheté, 1 Beaufort offert', 'Tombola — plusieurs lots à gagner'],
+        },
+      ],
+      specialEvent: {
+        name: 'Dim Fun',
+        tagline: 'Spécial Fête des Mères',
+        date: 'Dimanche 25 mai',
+        hours: 'De midi à 16h',
+        price: '20 000 FCFA',
+        description: 'Piscine · Barbecue à volonté · Accompagnements · Crudités · Salade composée · Fruits · Boisson locale',
+      },
     },
     rooms: [
       {
