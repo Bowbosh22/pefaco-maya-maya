@@ -28,6 +28,13 @@ export default function Navbar() {
   ]
   const reservationLink = `${base}/reservation`
   const solid = scrolled || menuOpen
+  // Sur le hero, la navbar est transparente et se superpose à une photo dont la
+  // luminosité varie selon l'hôtel/la page — un texte espresso y devenait peu
+  // lisible (ex. hall clair d'Oyo). Un voile dégradé + un texte clair réglent
+  // la lisibilité dans tous les cas ; une fois la page défilée (fond ivoire plein),
+  // on repasse au texte espresso habituel.
+  const navText = solid ? 'var(--espresso)' : 'var(--ivory)'
+  const navTextSoft = solid ? 'var(--soft)' : 'rgba(248,243,234,0.78)'
 
   return (
     <header
@@ -41,7 +48,9 @@ export default function Navbar() {
         display: 'flex',
         alignItems: 'center',
         padding: '0 clamp(20px, 4vw, 56px)',
-        background: solid ? 'var(--ivory)' : 'transparent',
+        background: solid
+          ? 'var(--ivory)'
+          : 'linear-gradient(180deg, rgba(29,38,32,0.55) 0%, rgba(29,38,32,0.15) 70%, rgba(29,38,32,0) 100%)',
         borderBottom: solid ? '1px solid var(--line)' : '1px solid transparent',
         transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease)',
       }}
@@ -60,8 +69,8 @@ export default function Navbar() {
         >
           <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)' }} />
         </span>
-        <span style={{ fontFamily: 'var(--serif)', fontSize: 17, letterSpacing: '0.02em', color: 'var(--espresso)' }}>
-          Pefaco <span style={{ fontStyle: 'italic', color: 'var(--terracotta)' }}>{hotel.shortName}</span>
+        <span style={{ fontFamily: 'var(--serif)', fontSize: 17, letterSpacing: '0.02em', color: navText }}>
+          Pefaco <span style={{ fontStyle: 'italic', color: solid ? 'var(--terracotta)' : 'var(--gold-2)' }}>{hotel.shortName}</span>
         </span>
       </Link>
 
@@ -78,7 +87,7 @@ export default function Navbar() {
               fontWeight: 600,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'var(--espresso)',
+              color: navText,
             }}
           >
             {link.label}
@@ -91,8 +100,8 @@ export default function Navbar() {
             fontWeight: 600,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: 'var(--soft)',
-            borderBottom: '1px solid var(--line)',
+            color: navTextSoft,
+            borderBottom: `1px solid ${solid ? 'var(--line)' : 'rgba(248,243,234,0.35)'}`,
             paddingBottom: 2,
           }}
         >
@@ -109,8 +118,8 @@ export default function Navbar() {
         className="nav-burger"
         style={{ marginLeft: 'auto', display: 'none', flexDirection: 'column', gap: 5, padding: 8 }}
       >
-        <span style={{ width: 22, height: 1.4, background: 'var(--espresso)' }} />
-        <span style={{ width: 22, height: 1.4, background: 'var(--espresso)' }} />
+        <span style={{ width: 22, height: 1.4, background: navText }} />
+        <span style={{ width: 22, height: 1.4, background: navText }} />
       </button>
 
       {menuOpen && (
