@@ -25,6 +25,7 @@ import oyoRestaurant from '../assets/images/oyo-restaurant.jpg'
 import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
 import mmSuiteLuxeMinisterielle from '../assets/images/maya-maya-suite-luxe-ministerielle.jpg'
 import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin.jpg'
+import mmHeritageNight from '../assets/images/maya-maya-heritage-night.jpg'
 
 export const hotels = [
   {
@@ -85,6 +86,13 @@ et pour ceux qui veulent prendre leur temps.`,
     ],
     testimonial:
       "Un accueil chaleureux et un emplacement idéal pour ceux qui arrivent ou repartent par l'aéroport — exactement ce qu'on attend d'un hôtel d'affaires à Brazzaville.",
+    // Onglet « L'Héritage Maya-Maya » — texte officiel « À propos de nous »
+    // de la plaquette Pefaco (28/09/2026), repris tel quel. Champ propre à
+    // Maya-Maya : sa seule présence détermine l'affichage du lien dans la
+    // barre de navigation (voir Navbar.jsx).
+    heritageText:
+      "Le Pefaco hôtel Maya-Maya est un véritable havre de luxe, situé en plein cœur de Brazzaville, en République du Congo. Alliant histoire riche, architecture moderne, décorations culturelles et services incomparables, nous offrons à nos clients un havre de paix exclusif.\n\nGrâce à des installations modernes et à notre engagement envers l'excellence, nous offrons une expérience inoubliable à chacun de nos visiteurs.",
+    heritageImage: mmHeritageNight,
     rooms: [
       {
         id: 1,
