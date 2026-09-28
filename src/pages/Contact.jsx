@@ -146,6 +146,48 @@ export default function Contact() {
         </form>
       </section>
 
+      {hotel.mapQuery && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(56px,8vw,96px)' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <p className="t-label" style={{ marginBottom: 16 }}>
+              Localisation
+            </p>
+            <h2
+              style={{
+                fontFamily: 'var(--serif)',
+                fontWeight: 400,
+                fontSize: 'clamp(26px,3vw,36px)',
+                color: 'var(--espresso)',
+                marginBottom: 24,
+                maxWidth: 640,
+              }}
+            >
+              Nous trouver
+            </h2>
+            <div style={{ border: '1px solid var(--line)' }}>
+              <iframe
+                title={`Localisation ${hotel.name}`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(hotel.mapQuery)}&output=embed`}
+                width="100%"
+                height="420"
+                style={{ border: 0, display: 'block' }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hotel.mapQuery)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline"
+              style={{ display: 'inline-block', marginTop: 16, fontSize: 12, color: 'var(--soft)' }}
+            >
+              Voir l'itinéraire sur Google Maps
+            </a>
+          </div>
+        </section>
+      )}
+
       {practicalRows.length > 0 && (
         <section style={{ padding: 'clamp(56px,8vw,96px) clamp(20px,4vw,56px)', background: 'var(--sand)' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto' }}>

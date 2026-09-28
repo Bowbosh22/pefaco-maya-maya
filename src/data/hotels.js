@@ -47,6 +47,9 @@ et pour ceux qui veulent prendre leur temps.`,
     bookingEmail: 'infos@pefacohotels.com',
     website: 'https://www.pefacohotelmayamaya.com',
     address: "Avenue de l'aéroport, à proximité de l'aéroport international Maya-Maya, Brazzaville",
+    // Nom utilisé pour centrer la carte Google Maps intégrée sur la page Contact
+    // (l'hôtel est déjà référencé sur Google/Booking/TripAdvisor sous ce nom).
+    mapQuery: 'Pefaco Hotel Maya Maya, Brazzaville, Congo',
     reception: '24h/24, 7j/7',
     practicalInfo: {
       checkIn: 'À partir de 14h00',
@@ -294,6 +297,9 @@ dans le département de la Cuvette.`,
       "Bonjour, je souhaite réserver une chambre à l'hôtel Pefaco Alima Palace (Oyo).",
     address:
       "Au bord de la rivière Alima, Oyo, Département de la Cuvette — adresse exacte à confirmer avec l'hôtel",
+    // Nom utilisé pour centrer la carte Google Maps intégrée sur la page Contact
+    // (l'hôtel est déjà référencé sur Google/TripAdvisor sous ce nom).
+    mapQuery: 'Pefaco Hotel Alima Palace, Oyo, Congo',
     reception: '24h/24, 7j/7',
     practicalInfo: {
       checkIn: 'À partir de 14h00',
