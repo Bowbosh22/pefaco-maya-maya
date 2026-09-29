@@ -265,27 +265,16 @@ function Lightbox({ images, alt, startIndex, onClose }) {
   )
 }
 
-// Une chambre = une ligne : carrousel photo, puis nom, caractéristiques, description et 2 CTA.
-// Remplace la grille de vignettes par une liste verticale empilée (une chambre après l'autre),
-// inspirée de l'arborescence de la page "Rooms" de larkhotels.com.
-function RoomRow({ room, isLast }) {
+// Une chambre = une carte verticale : carrousel photo en haut, puis nom, caractéristiques,
+// description et 2 CTA en bas — les cartes sont rangées 2 par 2 (grille), comme sur
+// larkhotels.com, et non plus empilées les unes sous les autres en pleine largeur.
+function RoomCard({ room }) {
   const hotel = useHotel()
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const images = room.images && room.images.length > 0 ? room.images : [room.coverImage]
 
   return (
-    <article
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
-        gap: 'clamp(24px,4vw,56px)',
-        alignItems: 'center',
-        paddingBottom: isLast ? 0 : 'clamp(48px,7vw,80px)',
-        marginBottom: isLast ? 0 : 'clamp(48px,7vw,80px)',
-        borderBottom: isLast ? 'none' : '1px solid var(--line)',
-      }}
-      className="room-row"
-    >
+    <article>
       <PhotoCarousel
         images={images}
         alt={room.name}
@@ -293,17 +282,17 @@ function RoomRow({ room, isLast }) {
         onOpenLightbox={(i) => setLightboxIndex(i)}
       />
 
-      <div>
-        <p className="t-label" style={{ marginBottom: 12 }}>
+      <div style={{ paddingTop: 22 }}>
+        <p className="t-label" style={{ marginBottom: 10 }}>
           {room.category}
         </p>
         <h2
           style={{
             fontFamily: 'var(--serif)',
             fontWeight: 400,
-            fontSize: 'clamp(24px,2.6vw,34px)',
+            fontSize: 'clamp(22px,2vw,28px)',
             color: 'var(--espresso)',
-            marginBottom: 14,
+            marginBottom: 12,
             lineHeight: 1.15,
           }}
         >
@@ -314,26 +303,41 @@ function RoomRow({ room, isLast }) {
           style={{
             fontFamily: 'var(--sans)',
             fontSize: 12,
-            fontWeight: 600,
-            letterSpacing: '0.04em',
             color: 'var(--soft)',
-            marginBottom: 16,
+            marginBottom: 14,
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '6px 18px',
+            gap: '4px 22px',
           }}
         >
-          {room.guests ? <span>{room.guests} pers.</span> : null}
-          {room.bed ? <span>{room.bed}</span> : null}
-          {room.surface ? <span>{room.surface} m²</span> : null}
-          {!room.guests && !room.bed && !room.surface && <span>Surface et capacité à confirmer</span>}
+          {room.guests || room.bed || room.surface ? (
+            <>
+              {room.guests && (
+                <span>
+                  <span style={{ fontWeight: 700, letterSpacing: '0.06em', color: 'var(--espresso)' }}>PERSONNES</span> {room.guests}
+                </span>
+              )}
+              {room.bed && (
+                <span>
+                  <span style={{ fontWeight: 700, letterSpacing: '0.06em', color: 'var(--espresso)' }}>LIT(S)</span> {room.bed}
+                </span>
+              )}
+              {room.surface && (
+                <span>
+                  <span style={{ fontWeight: 700, letterSpacing: '0.06em', color: 'var(--espresso)' }}>SURFACE</span> {room.surface} m²
+                </span>
+              )}
+            </>
+          ) : (
+            <span>Surface et capacité à confirmer</span>
+          )}
         </p>
 
-        <p className="t-body" style={{ marginBottom: 22, maxWidth: 480 }}>
+        <p className="t-body" style={{ marginBottom: 18 }}>
           {room.description}
         </p>
 
-        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: 'var(--terracotta)', marginBottom: 24 }}>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: 'var(--terracotta)', marginBottom: 20 }}>
           {room.price}
           {room.priceUnit ? ` / ${room.priceUnit}` : ''}
           {room.priceEstimated && <span style={{ fontWeight: 400, color: 'var(--soft)' }}> (estimé)</span>}
@@ -344,11 +348,11 @@ function RoomRow({ room, isLast }) {
           )}
         </p>
 
-        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-          <Link to={`/${hotel.slug}/chambres/${room.slug}`} className="btn-outline">
+        <div style={{ display: 'flex', gap: 12 }}>
+          <Link to={`/${hotel.slug}/chambres/${room.slug}`} className="btn-outline" style={{ flex: 1, justifyContent: 'center' }}>
             Voir la fiche
           </Link>
-          <Link to={`/${hotel.slug}/reservation?room=${room.slug}`} className="btn-solid">
+          <Link to={`/${hotel.slug}/reservation?room=${room.slug}`} className="btn-solid" style={{ flex: 1, justifyContent: 'center' }}>
             Réserver
           </Link>
         </div>
@@ -361,12 +365,20 @@ function RoomRow({ room, isLast }) {
   )
 }
 
-// Liste verticale de toutes les chambres d'un hôtel, une par une, chacune avec son propre carrousel.
+// Grille de toutes les chambres d'un hôtel, 2 par ligne (comme larkhotels.com/.../rooms),
+// chacune avec son propre carrousel photo réel.
 export default function RoomCarouselList({ rooms }) {
   return (
-    <div>
-      {rooms.map((room, i) => (
-        <RoomRow key={room.id} room={room} isLast={i === rooms.length - 1} />
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+        gap: 'clamp(32px,4vw,56px) clamp(24px,3vw,40px)',
+      }}
+      className="room-grid"
+    >
+      {rooms.map((room) => (
+        <RoomCard key={room.id} room={room} />
       ))}
     </div>
   )
