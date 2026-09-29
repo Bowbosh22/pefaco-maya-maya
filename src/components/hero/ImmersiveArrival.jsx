@@ -1,14 +1,34 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useHotel } from '../../context/HotelContext'
-import { buildRailTabs } from './railContent'
+
+// Hero repensé le 29/09/2026 dans l'esprit de larkhotels.com/california/carmel-by-the-sea/tradewinds :
+// une photo épurée (plus de rail d'expériences ni de bandeau prix superposés), la carte
+// "Vérifier la disponibilité" existante conservée telle quelle, puis le nom de l'hôtel + le
+// tagline + les 2 CTA en dessous, sur fond clair (comme le nom d'hôtel + description chez Lark).
+// Ajustement du 29/09 (demande explicite) : la photo couvre tout l'écran (100svh). Le filigrane
+// "PEFACO HOTEL ..." en bas de la photo source a été recadré directement dans le fichier image
+// (un recadrage objectPosition seul ne suffisait pas à l'exclure de façon fiable sur tous les
+// ratios d'écran, notamment mobile portrait, où object-fit: cover ne rogne pas la hauteur).
+// La carte de réservation est redevenue un petit médaillon discret dans un coin plutôt qu'un
+// grand encart centré à cheval sur la photo.
+// Ajustement mobile (29/09, référence : capture DevTools de larkhotels.com en 390px) : sur mobile
+// uniquement, la carte détaillée (dates + voyageurs + bouton) est remplacée par une pastille
+// compacte façon Lark — libellé + résumé + bouton rond — qui envoie directement vers la page de
+// réservation pour le choix précis des dates. Le hero est aussi moins haut sur mobile (moins
+// imposant), là où il reste plein écran sur desktop.
+function IconSearch() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+    </svg>
+  )
+}
 
 export default function ImmersiveArrival() {
   const hotel = useHotel()
   const navigate = useNavigate()
-  const tabs = buildRailTabs(hotel)
-  const [active, setActive] = useState(0)
-  const current = tabs[active]
 
   const [availability, setAvailability] = useState({ arrival: '', departure: '', guests: '2 adultes' })
 
@@ -23,196 +43,50 @@ export default function ImmersiveArrival() {
   const whatsappLink = hotel.whatsapp
     ? `https://wa.me/${hotel.whatsapp}?text=${encodeURIComponent(hotel.whatsappMessage)}`
     : null
-  const pillRooms = hotel.rooms.slice(0, 3)
 
   return (
-    <section style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', background: 'var(--espresso)' }}>
+    <section style={{ position: 'relative' }}>
       <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundImage: `url(${current.image})`,
-          transition: 'opacity 0.5s ease',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(180deg, rgba(29,38,32,.55) 0%, rgba(29,38,32,.25) 35%, rgba(29,38,32,.55) 78%, rgba(29,38,32,.85) 100%)',
-        }}
-      />
-
-      <div
-        className="hexp-rail"
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: '50%',
-          transform: 'translateY(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          zIndex: 20,
-          background: 'rgba(248,243,234,.94)',
-          backdropFilter: 'blur(6px)',
-          borderRadius: '0 10px 10px 0',
-          overflow: 'hidden',
-          boxShadow: '0 20px 50px -20px rgba(0,0,0,.4)',
-        }}
-      >
-        <div
-          className="hexp-rail-label"
-          style={{
-            writingMode: 'vertical-rl',
-            transform: 'rotate(180deg)',
-            fontFamily: 'var(--sans)',
-            fontSize: 10,
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: 'var(--soft)',
-            padding: '14px 8px',
-            borderBottom: '1px solid rgba(29,38,32,.1)',
-            textAlign: 'center',
-          }}
-        >
-          Sélectionner une expérience
-        </div>
-        {tabs.map((tab, i) => (
-          <button
-            key={tab.key}
-            type="button"
-            aria-label={tab.label}
-            onClick={() => setActive(i)}
-            className="hexp-btn"
-            style={{
-              width: 64,
-              height: 64,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderBottom: '1px solid rgba(29,38,32,.08)',
-              position: 'relative',
-              background: i === active ? 'var(--espresso)' : 'transparent',
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              fill="none"
-              stroke={i === active ? 'var(--gold-2)' : 'var(--terracotta-2)'}
-              strokeWidth="1.6"
-              viewBox="0 0 24 24"
-            >
-              {tab.icon}
-            </svg>
-          </button>
-        ))}
-      </div>
-
-      <div
-        className="hexp-inner"
+        className="hexp-image"
         style={{
           position: 'relative',
-          zIndex: 10,
-          minHeight: '100svh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          paddingLeft: 'clamp(96px,10vw,140px)',
-          paddingRight: 'clamp(24px,4vw,56px)',
-          paddingTop: 120,
-          paddingBottom: 120,
+          height: '100svh',
+          overflow: 'hidden',
+          background: 'var(--espresso)',
         }}
       >
-        <div style={{ maxWidth: 640 }}>
-          <p
-            style={{
-              fontFamily: 'var(--sans)',
-              fontSize: 11,
-              letterSpacing: '0.24em',
-              textTransform: 'uppercase',
-              color: 'rgba(248,243,234,.75)',
-              marginBottom: 20,
-            }}
-          >
-            {current.tag}
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--serif)',
-              fontWeight: 300,
-              lineHeight: 1.04,
-              fontSize: 'clamp(2.4rem,6.2vw,5.2rem)',
-              color: 'var(--ivory)',
-            }}
-          >
-            {current.top}
-            <br />
-            <em style={{ fontStyle: 'italic', color: 'var(--gold-2)' }}>{current.bot}</em>
-          </h1>
-          <p
-            style={{
-              color: 'rgba(248,243,234,.7)',
-              marginTop: 24,
-              maxWidth: 520,
-              lineHeight: 1.7,
-              fontSize: 'clamp(.95rem,1.6vw,1.05rem)',
-            }}
-          >
-            {current.sub}
-          </p>
-          <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-            <Link
-              to={`/${hotel.slug}/chambres`}
-              className="btn-solid"
-              style={{ background: 'var(--ivory)', color: 'var(--espresso)', borderColor: 'var(--ivory)' }}
-            >
-              Découvrir les chambres
-            </Link>
-            {whatsappLink && (
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-light"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '14px 32px',
-                  border: '1px solid rgba(248,243,234,.5)',
-                  fontFamily: 'var(--sans)',
-                  fontSize: 10,
-                  fontWeight: 600,
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--ivory)',
-                }}
-              >
-                WhatsApp
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
+        <img
+          src={hotel.heroImage}
+          alt={hotel.name}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(29,38,32,.35) 0%, rgba(29,38,32,0) 24%, rgba(29,38,32,.15) 70%, rgba(29,38,32,.4) 100%)',
+          }}
+        />
 
-      <div className="hexp-book-wrap" style={{ position: 'absolute', zIndex: 20, top: 110, right: 'clamp(20px,4vw,56px)' }}>
         <div
           className="hexp-book"
           style={{
-            background: 'var(--ivory)',
+            position: 'absolute',
+            zIndex: 20,
+            left: 'clamp(16px,3vw,40px)',
+            bottom: 'clamp(20px,4vw,40px)',
+            background: 'rgba(248,243,234,.92)',
+            backdropFilter: 'blur(4px)',
             borderRadius: 8,
-            padding: '20px 22px',
-            boxShadow: '0 24px 60px -18px rgba(0,0,0,.5)',
-            width: 'min(310px, 86vw)',
+            padding: '16px 18px',
+            boxShadow: '0 18px 44px -18px rgba(0,0,0,.5)',
+            width: 'min(260px, 78vw)',
           }}
         >
-          <p className="t-label" style={{ marginBottom: 12 }}>
+          <p className="t-label" style={{ marginBottom: 10, fontSize: 9 }}>
             Vérifier la disponibilité
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div>
               <label className="t-label" style={{ display: 'block', fontSize: 9 }}>
                 Arrivée
@@ -286,53 +160,125 @@ export default function ImmersiveArrival() {
             Vérifier la disponibilité
           </button>
         </div>
+
+        <div
+          className="hexp-pill"
+          style={{
+            position: 'absolute',
+            zIndex: 20,
+            left: 16,
+            right: 16,
+            bottom: 'clamp(16px,4vw,28px)',
+            display: 'none',
+            alignItems: 'center',
+            gap: 12,
+            background: 'rgba(248,243,234,.95)',
+            backdropFilter: 'blur(4px)',
+            borderRadius: 999,
+            boxShadow: '0 14px 36px -14px rgba(0,0,0,.5)',
+            padding: '8px 8px 8px 20px',
+          }}
+        >
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+                color: 'var(--espresso)',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              Planifier votre séjour
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: 11,
+                color: 'var(--soft)',
+                marginTop: 2,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              Dates &bull; {availability.guests}
+            </p>
+          </div>
+          <button
+            type="button"
+            aria-label="Vérifier la disponibilité"
+            onClick={checkAvailability}
+            style={{
+              width: 40,
+              height: 40,
+              flexShrink: 0,
+              borderRadius: '50%',
+              background: 'var(--espresso)',
+              color: 'var(--ivory)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <IconSearch />
+          </button>
+        </div>
       </div>
 
       <div
-        className="hexp-pills"
         style={{
-          position: 'absolute',
-          zIndex: 20,
-          left: 'clamp(96px,10vw,140px)',
-          right: 'clamp(24px,4vw,56px)',
-          bottom: 36,
-          display: 'flex',
-          alignItems: 'center',
-          overflowX: 'auto',
-          gap: 20,
+          textAlign: 'center',
+          maxWidth: 640,
+          margin: '0 auto',
+          padding: 'clamp(56px,8vw,88px) clamp(20px,4vw,32px) clamp(64px,8vw,96px)',
         }}
       >
-        {pillRooms.map((room) => (
-          <Link
-            key={room.slug}
-            to={`/${hotel.slug}/chambres/${room.slug}`}
-            style={{
-              fontFamily: 'var(--sans)',
-              fontSize: 13,
-              color: 'var(--ivory)',
-              whiteSpace: 'nowrap',
-              paddingRight: 20,
-              borderRight: '1px solid rgba(248,243,234,.25)',
-            }}
-          >
-            <span style={{ fontWeight: 600 }}>{room.name}</span> ·{' '}
-            <span style={{ color: 'rgba(248,243,234,.6)' }}>
-              {room.price}
-              {room.priceEstimated ? ' (estimé)' : ''}
-            </span>
+        <h1
+          style={{
+            fontFamily: 'var(--serif)',
+            fontWeight: 400,
+            fontSize: 'clamp(2.2rem,5vw,3.6rem)',
+            color: 'var(--espresso)',
+            lineHeight: 1.1,
+          }}
+        >
+          {hotel.name}
+        </h1>
+        <p
+          style={{
+            fontFamily: 'var(--sans)',
+            fontSize: 12,
+            fontWeight: 600,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'var(--terracotta)',
+            marginTop: 14,
+          }}
+        >
+          {hotel.heroTagline}
+        </p>
+
+        <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
+          <Link to={`/${hotel.slug}/chambres`} className="btn-solid">
+            Découvrir les chambres
           </Link>
-        ))}
+          {whatsappLink && (
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-outline">
+              WhatsApp
+            </a>
+          )}
+        </div>
       </div>
 
       <style>{`
-        @media (max-width: 860px) {
-          .hexp-rail { position: static !important; transform: none !important; flex-direction: row !important; border-radius: 0 !important; width: 100%; overflow-x: auto; box-shadow: none !important; margin-top: var(--nav-h); }
-          .hexp-rail-label { display: none; }
-          .hexp-btn { flex: 0 0 auto; width: 56px !important; height: 56px !important; border-bottom: 0 !important; border-right: 1px solid rgba(29,38,32,.08); }
-          .hexp-inner { padding: 24px 20px 100px !important; }
-          .hexp-book-wrap { position: static !important; margin: 20px !important; width: auto !important; }
-          .hexp-book { width: 100% !important; }
-          .hexp-pills { position: static !important; margin: 0 20px 20px !important; flex-wrap: wrap; }
+        @media (max-width: 640px) {
+          .hexp-image { height: 62vh !important; min-height: 380px; }
+          .hexp-book { display: none !important; }
+          .hexp-pill { display: flex !important; }
         }
       `}</style>
     </section>
