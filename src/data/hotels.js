@@ -14,16 +14,13 @@ import oyoSuiteMaster2 from '../assets/images/oyo-suite-master-2.jpg'
 import oyoSuiteMaster1 from '../assets/images/oyo-suite-master-1.jpg'
 import oyoSuiteMinisterial1 from '../assets/images/oyo-suite-ministerial-1.jpg'
 import mmStandardMayaMaya from '../assets/images/maya-maya-standard-maya-maya.jpg'
-import mmExecutive from '../assets/images/maya-maya-executive.jpg'
 import mmMasterSuite from '../assets/images/maya-maya-master-suite.jpg'
-import mmSuitePanoramiquePresidentielle from '../assets/images/maya-maya-suite-panoramique-presidentielle.jpg'
 import mmRestaurant1 from '../assets/images/maya-maya-restaurant-1.jpg'
 import mmDetente from '../assets/images/maya-maya-detente.jpg'
 import mmRestaurant2 from '../assets/images/maya-maya-restaurant-2.jpg'
 import mmRestaurant3 from '../assets/images/maya-maya-restaurant-3.jpg'
 import oyoRestaurant from '../assets/images/oyo-restaurant.jpg'
 import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
-import mmSuiteLuxeMinisterielle from '../assets/images/maya-maya-suite-luxe-ministerielle.jpg'
 // Les 3 lignes suivantes remplacent, le 29/09/2026, les 3 photos "à titre
 // indicatif" signalées lors de l'intégration de la plaquette du 22/09 (Bilanga
 // Twin pax, Suite Ministérielle, Suite Présidentielle). Source : fiche Expedia
@@ -35,12 +32,23 @@ import mmSuiteLuxeMinisterielle from '../assets/images/maya-maya-suite-luxe-mini
 // ↔ "Superior Suite" (lustre, mur à motif) — ces deux dernières sont les
 // candidates les plus vraisemblables mais Expedia ne nomme pas ses catégories
 // comme la plaquette Pefaco, donc la certitude est moyenne (à confirmer par
-// Pefaco si possible). Les anciennes images partagées (mmSuiteLuxeMinisterielle,
-// mmSuitePanoramiquePresidentielle) restent utilisées par Suite de luxe et
-// Suite panoramique respectivement, qui elles sont confirmées.
+// Pefaco si possible).
 import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin-v2.jpg'
 import mmSuiteMinisterielleDediee from '../assets/images/maya-maya-suite-ministerielle.jpg'
 import mmSuitePresidentielleDediee from '../assets/images/maya-maya-suite-presidentielle.jpg'
+// Les 3 lignes suivantes remplacent, également le 29/09/2026, les photos de
+// Chambre Exécutive / Suite de luxe / Suite panoramique. Contrairement aux 3
+// ci-dessus, ces 3 catégories ont un nom Pefaco qui est la traduction exacte
+// d'une catégorie Expedia ("Executive Room", "Deluxe Suite", "Panoramic
+// Suite") : la photo vient donc directement de la fiche Expedia du même nom,
+// sans devinette de correspondance — confiance haute, pas de badge indicatif.
+// Remplace aussi une confusion repérée à cette occasion : l'ancienne photo de
+// Chambre Exécutive (mur à motifs losange) ne montrait aucun bureau alors que
+// la fiche affiche "Bureau" comme équipement ; la nouvelle photo Expedia
+// "Executive Room" est la bonne référence pour cette catégorie.
+import mmExecutiveV2 from '../assets/images/maya-maya-executive-v2.jpg'
+import mmSuiteLuxeV2 from '../assets/images/maya-maya-suite-luxe-v2.jpg'
+import mmSuitePanoramiqueV2 from '../assets/images/maya-maya-suite-panoramique-v2.jpg'
 import mmActivitesExpositions from '../assets/images/maya-maya-activites-expositions.jpg'
 import mmActivitesTennis from '../assets/images/maya-maya-activites-tennis.jpg'
 import mmActivitesSoirees from '../assets/images/maya-maya-activites-soirees.jpg'
@@ -410,8 +418,8 @@ et pour ceux qui veulent prendre leur temps.`,
         description:
           "Un coin salon séparé et les mêmes attentions que partout dans l'hôtel — jusqu'au petit-déjeuner servi tôt pour les vols du matin.",
         features: ['Climatisation', 'Coin salon', 'Wi-Fi haut débit', 'Minibar', 'Bureau'],
-        coverImage: mmExecutive,
-        images: [mmExecutive],
+        coverImage: mmExecutiveV2,
+        images: [mmExecutiveV2],
       },
       {
         id: 5,
@@ -448,8 +456,8 @@ et pour ceux qui veulent prendre leur temps.`,
         description:
           "Un espace salon lumineux pensé pour recevoir comme pour se poser, avec le raffinement qui distingue les suites Pefaco.",
         features: ['Salon séparé', 'Climatisation', 'Télévision écran plat', 'Minibar', 'Service en chambre'],
-        coverImage: mmSuiteLuxeMinisterielle,
-        images: [mmSuiteLuxeMinisterielle],
+        coverImage: mmSuiteLuxeV2,
+        images: [mmSuiteLuxeV2],
       },
       {
         id: 7,
@@ -473,8 +481,8 @@ et pour ceux qui veulent prendre leur temps.`,
           'Accès prioritaire navette aéroport',
           'Service en chambre',
         ],
-        coverImage: mmSuitePanoramiquePresidentielle,
-        images: [mmSuitePanoramiquePresidentielle],
+        coverImage: mmSuitePanoramiqueV2,
+        images: [mmSuitePanoramiqueV2],
       },
       {
         id: 8,
