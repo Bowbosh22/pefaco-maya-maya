@@ -1,5 +1,6 @@
 import { useHotel } from '../context/HotelContext'
 import RoomCarouselList from '../components/RoomCarousel'
+import RoomSearchBar from '../components/RoomSearchBar'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
 
@@ -42,8 +43,9 @@ export default function Chambres() {
         )}
       </section>
 
-      <section style={{ padding: 'clamp(56px,8vw,96px) clamp(20px,4vw,56px)' }}>
+      <section style={{ padding: 'clamp(40px,6vw,64px) clamp(20px,4vw,56px) clamp(56px,8vw,96px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <RoomSearchBar />
           <RoomCarouselList rooms={hotel.rooms} />
         </div>
       </section>
