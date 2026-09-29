@@ -13,14 +13,20 @@ import oyoKitchenette2 from '../assets/images/oyo-chambre-kitchenette-2.jpg'
 import oyoSuiteMaster2 from '../assets/images/oyo-suite-master-2.jpg'
 import oyoSuiteMaster1 from '../assets/images/oyo-suite-master-1.jpg'
 import oyoSuiteMinisterial1 from '../assets/images/oyo-suite-ministerial-1.jpg'
-import mmStandardMayaMaya from '../assets/images/maya-maya-standard-maya-maya.jpg'
-import mmMasterSuite from '../assets/images/maya-maya-master-suite.jpg'
+import mmStandardV2Chambre from '../assets/images/maya-maya-standard-room-v2-chambre.jpg'
+import mmStandardV2Lit from '../assets/images/maya-maya-standard-room-v2-lit.jpg'
+import mmStandardV2LitBlanc from '../assets/images/maya-maya-standard-room-v2-lit-blanc.jpg'
+import mmStandardV2Bureau from '../assets/images/maya-maya-standard-room-v2-bureau.jpg'
+import mmStandardV2Sdb from '../assets/images/maya-maya-standard-room-v2-sdb.jpg'
+import mmMasterSuiteV2Chambre from '../assets/images/maya-maya-master-suite-v2-chambre.jpg'
+import mmMasterSuiteV2Salon from '../assets/images/maya-maya-master-suite-v2-salon.jpg'
+import mmMasterSuiteV2SalleAManger from '../assets/images/maya-maya-master-suite-v2-salle-a-manger.jpg'
+import mmMasterSuiteV2VueEnsemble from '../assets/images/maya-maya-master-suite-v2-vue-ensemble.jpg'
 import mmRestaurant1 from '../assets/images/maya-maya-restaurant-1.jpg'
 import mmDetente from '../assets/images/maya-maya-detente.jpg'
 import mmRestaurant2 from '../assets/images/maya-maya-restaurant-2.jpg'
 import mmRestaurant3 from '../assets/images/maya-maya-restaurant-3.jpg'
 import oyoRestaurant from '../assets/images/oyo-restaurant.jpg'
-import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
 // Les 3 lignes suivantes remplacent, le 29/09/2026, les 3 photos "à titre
 // indicatif" signalées lors de l'intégration de la plaquette du 22/09 (Bilanga
 // Twin pax, Suite Ministérielle, Suite Présidentielle). Source : fiche Expedia
@@ -34,7 +40,6 @@ import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
 // comme la plaquette Pefaco, donc la certitude est moyenne (à confirmer par
 // Pefaco si possible).
 import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin-v2.jpg'
-import mmSuiteMinisterielleDediee from '../assets/images/maya-maya-suite-ministerielle.jpg'
 import mmSuitePresidentielleDediee from '../assets/images/maya-maya-suite-presidentielle.jpg'
 // Les 3 lignes suivantes remplacent, également le 29/09/2026, les photos de
 // Chambre Exécutive / Suite de luxe / Suite panoramique. Contrairement aux 3
@@ -47,28 +52,36 @@ import mmSuitePresidentielleDediee from '../assets/images/maya-maya-suite-presid
 // la fiche affiche "Bureau" comme équipement ; la nouvelle photo Expedia
 // "Executive Room" est la bonne référence pour cette catégorie.
 import mmExecutiveV2 from '../assets/images/maya-maya-executive-v2.jpg'
-import mmSuiteLuxeV2 from '../assets/images/maya-maya-suite-luxe-v2.jpg'
-import mmSuitePanoramiqueV2 from '../assets/images/maya-maya-suite-panoramique-v2.jpg'
 // Photos supplémentaires (minimum 3 par chambre), ajoutées le 29/09/2026.
 // MBOTE / Maya-Maya standard / Master Suite : photos génériques de la fiche Expedia
 // (catégorie "Standard Room" et ambiances hôtel), choix validé par Mr. Mbemba — "à titre indicatif".
-import mmStandardRoomBathroom from '../assets/images/maya-maya-standard-room-bathroom.jpg'
-import mmStandardRoomChambre from '../assets/images/maya-maya-standard-room-chambre.jpg'
 // Bilanga Twin pax : 2 photos supplémentaires de la même catégorie Expedia "Standard Twin Room" déjà confirmée.
 import mmBilangaExtra1 from '../assets/images/maya-maya-bilanga-extra1.jpg'
 import mmBilangaExtra2 from '../assets/images/maya-maya-bilanga-extra2.jpg'
 // Chambre Exécutive : 2 photos supplémentaires de la catégorie Expedia "Executive Room" (même nom, confiance haute).
 import mmExecutiveBathroom from '../assets/images/maya-maya-executive-bathroom.jpg'
 import mmExecutiveExtra2 from '../assets/images/maya-maya-executive-extra2.jpg'
-// Suite de luxe : 2 photos supplémentaires de la catégorie Expedia "Deluxe Suite" (même nom, confiance haute).
-import mmSuiteLuxeDouche from '../assets/images/maya-maya-suite-luxe-douche.jpg'
-import mmSuiteLuxeSalon from '../assets/images/maya-maya-suite-luxe-salon.jpg'
-// Suite panoramique : 2 photos supplémentaires de la catégorie Expedia "Panoramic Suite" (même nom, confiance haute).
-import mmSuitePanoramiqueBureau from '../assets/images/maya-maya-suite-panoramique-bureau.jpg'
-import mmSuitePanoramiqueSdb from '../assets/images/maya-maya-suite-panoramique-sdb.jpg'
-// Suite Ministérielle : 2 photos supplémentaires de la catégorie Expedia "Junior Suite" (meilleure estimation, indicatif).
-import mmSuiteMinisterielleSalon from '../assets/images/maya-maya-suite-ministerielle-salon.jpg'
-import mmSuiteMinisterielleLit from '../assets/images/maya-maya-suite-ministerielle-lit.jpg'
+import mmExecutiveV3BureauLit from '../assets/images/maya-maya-executive-v3-bureau-lit.jpg'
+import mmExecutiveV3ChambreSdb from '../assets/images/maya-maya-executive-v3-chambre-sdb.jpg'
+import mmExecutiveV3Salon from '../assets/images/maya-maya-executive-v3-salon.jpg'
+// Suite de luxe : 5 nouvelles photos fournies par Mr. Mbemba le 29/09/2026, remplaçant les précédentes.
+import mmSuiteLuxeV3Chambre from '../assets/images/maya-maya-suite-luxe-v3-chambre.jpg'
+import mmSuiteLuxeV3Bureau from '../assets/images/maya-maya-suite-luxe-v3-bureau.jpg'
+import mmSuiteLuxeV3Lit from '../assets/images/maya-maya-suite-luxe-v3-lit.jpg'
+import mmSuiteLuxeV3Canape from '../assets/images/maya-maya-suite-luxe-v3-canape.jpg'
+import mmSuiteLuxeV3Salon from '../assets/images/maya-maya-suite-luxe-v3-salon.jpg'
+// Suite panoramique : 5 nouvelles photos fournies par Mr. Mbemba le 29/09/2026, remplaçant les précédentes.
+import mmSuitePanoramiqueV3ChambreLarge from '../assets/images/maya-maya-suite-panoramique-v3-chambre-large.jpg'
+import mmSuitePanoramiqueV3Lit from '../assets/images/maya-maya-suite-panoramique-v3-lit.jpg'
+import mmSuitePanoramiqueV3Jacuzzi from '../assets/images/maya-maya-suite-panoramique-v3-jacuzzi.jpg'
+import mmSuitePanoramiqueV3TerrasseJacuzzi from '../assets/images/maya-maya-suite-panoramique-v3-terrasse-jacuzzi.jpg'
+import mmSuitePanoramiqueV3TerrasseSalon from '../assets/images/maya-maya-suite-panoramique-v3-terrasse-salon.jpg'
+// Suite Ministérielle : 4 nouvelles photos fournies par Mr. Mbemba le 29/09/2026 ("suite junior"),
+// cohérent avec l'estimation Expedia "Junior Suite" déjà retenue — remplace les précédentes.
+import mmSuiteMinisterielleV2ChambreSalon from '../assets/images/maya-maya-suite-ministerielle-v2-chambre-salon.jpg'
+import mmSuiteMinisterielleV2Bureau from '../assets/images/maya-maya-suite-ministerielle-v2-bureau.jpg'
+import mmSuiteMinisterielleV2Salon from '../assets/images/maya-maya-suite-ministerielle-v2-salon.jpg'
+import mmSuiteMinisterielleV2Lit from '../assets/images/maya-maya-suite-ministerielle-v2-lit.jpg'
 // Suite Présidentielle : 3 photos supplémentaires de la catégorie Expedia "Superior Suite" (meilleure estimation, indicatif).
 import mmSuitePresidentielleChambre from '../assets/images/maya-maya-suite-presidentielle-chambre.jpg'
 import mmSuitePresidentielleSdb from '../assets/images/maya-maya-suite-presidentielle-sdb.jpg'
@@ -386,8 +399,8 @@ et pour ceux qui veulent prendre leur temps.`,
           "Climatisée et lumineuse, pensée pour l'étape courte comme pour le séjour d'affaires. À deux pas du hall et du restaurant.",
         features: ['Climatisation', 'Wi-Fi haut débit', 'Bureau', 'Coffre-fort', 'Télévision écran plat'],
         photoIndicative: true,
-        coverImage: mmStandardMbote,
-        images: [mmStandardMbote, mmStandardRoomChambre, mmStandardRoomBathroom],
+        coverImage: mmStandardV2Chambre,
+        images: [mmStandardV2Chambre, mmStandardV2Lit, mmStandardV2LitBlanc, mmStandardV2Bureau, mmStandardV2Sdb],
       },
       {
         id: 2,
@@ -406,13 +419,13 @@ et pour ceux qui veulent prendre leur temps.`,
           "Même confort que la Chambre standard MBOTE, dans l'aile historique de l'hôtel. Climatisation, bureau et connexion Wi-Fi haut débit pour un séjour efficace.",
         features: ['Climatisation', 'Wi-Fi haut débit', 'Bureau', 'Coffre-fort', 'Télévision écran plat'],
         photoIndicative: true,
-        coverImage: mmStandardMayaMaya,
-        images: [mmStandardMayaMaya, mmStandardRoomChambre, mmStandardRoomBathroom],
+        coverImage: mmStandardV2Chambre,
+        images: [mmStandardV2Chambre, mmStandardV2Lit, mmStandardV2LitBlanc, mmStandardV2Bureau, mmStandardV2Sdb],
       },
       {
         id: 3,
         slug: 'bilanga-twin',
-        name: 'Chambre Bilanga Twin pax',
+        name: 'Standard Twin Room',
         tagline: 'Deux lits, pour voyager à deux.',
         category: 'Chambre',
         surface: null,
@@ -431,7 +444,7 @@ et pour ceux qui veulent prendre leur temps.`,
       {
         id: 4,
         slug: 'executive',
-        name: 'Chambre Exécutive',
+        name: 'Executive Room',
         tagline: 'Plus d\'espace, un coin salon.',
         category: 'Chambre',
         surface: null,
@@ -445,7 +458,14 @@ et pour ceux qui veulent prendre leur temps.`,
           "Un coin salon séparé et les mêmes attentions que partout dans l'hôtel — jusqu'au petit-déjeuner servi tôt pour les vols du matin.",
         features: ['Climatisation', 'Coin salon', 'Wi-Fi haut débit', 'Minibar', 'Bureau'],
         coverImage: mmExecutiveV2,
-        images: [mmExecutiveV2, mmExecutiveExtra2, mmExecutiveBathroom],
+        images: [
+          mmExecutiveV2,
+          mmExecutiveExtra2,
+          mmExecutiveBathroom,
+          mmExecutiveV3BureauLit,
+          mmExecutiveV3ChambreSdb,
+          mmExecutiveV3Salon,
+        ],
       },
       {
         id: 5,
@@ -464,13 +484,18 @@ et pour ceux qui veulent prendre leur temps.`,
           "Un salon distinct derrière une claustra en bois, un vrai canapé, et une vue dégagée. C'est la suite que l'hôtel montre en premier — et elle le mérite.",
         features: ['Salon séparé', 'Canapé', 'Climatisation', 'Télévision écran plat', 'Minibar'],
         photoIndicative: true,
-        coverImage: mmMasterSuite,
-        images: [mmMasterSuite, mmActivitesPiscine, mmHeritageLobby],
+        coverImage: mmMasterSuiteV2Chambre,
+        images: [
+          mmMasterSuiteV2Chambre,
+          mmMasterSuiteV2Salon,
+          mmMasterSuiteV2SalleAManger,
+          mmMasterSuiteV2VueEnsemble,
+        ],
       },
       {
         id: 6,
         slug: 'suite-luxe',
-        name: 'Suite de luxe',
+        name: 'Deluxe Suite',
         tagline: 'L\'étage supérieur du confort.',
         category: 'Suite',
         surface: null,
@@ -483,13 +508,19 @@ et pour ceux qui veulent prendre leur temps.`,
         description:
           "Un espace salon lumineux pensé pour recevoir comme pour se poser, avec le raffinement qui distingue les suites Pefaco.",
         features: ['Salon séparé', 'Climatisation', 'Télévision écran plat', 'Minibar', 'Service en chambre'],
-        coverImage: mmSuiteLuxeV2,
-        images: [mmSuiteLuxeV2, mmSuiteLuxeSalon, mmSuiteLuxeDouche],
+        coverImage: mmSuiteLuxeV3Chambre,
+        images: [
+          mmSuiteLuxeV3Chambre,
+          mmSuiteLuxeV3Bureau,
+          mmSuiteLuxeV3Lit,
+          mmSuiteLuxeV3Canape,
+          mmSuiteLuxeV3Salon,
+        ],
       },
       {
         id: 7,
         slug: 'suite-panoramique',
-        name: 'Suite panoramique',
+        name: 'Panoramic Suite',
         tagline: 'Pour les séjours qui comptent.',
         category: 'Suite',
         surface: null,
@@ -508,8 +539,14 @@ et pour ceux qui veulent prendre leur temps.`,
           'Accès prioritaire navette aéroport',
           'Service en chambre',
         ],
-        coverImage: mmSuitePanoramiqueV2,
-        images: [mmSuitePanoramiqueV2, mmSuitePanoramiqueBureau, mmSuitePanoramiqueSdb],
+        coverImage: mmSuitePanoramiqueV3ChambreLarge,
+        images: [
+          mmSuitePanoramiqueV3ChambreLarge,
+          mmSuitePanoramiqueV3Lit,
+          mmSuitePanoramiqueV3Jacuzzi,
+          mmSuitePanoramiqueV3TerrasseJacuzzi,
+          mmSuitePanoramiqueV3TerrasseSalon,
+        ],
       },
       {
         id: 8,
@@ -534,8 +571,13 @@ et pour ceux qui veulent prendre leur temps.`,
           'Service en chambre',
           'Accès prioritaire événements',
         ],
-        coverImage: mmSuiteMinisterielleDediee,
-        images: [mmSuiteMinisterielleDediee, mmSuiteMinisterielleSalon, mmSuiteMinisterielleLit],
+        coverImage: mmSuiteMinisterielleV2ChambreSalon,
+        images: [
+          mmSuiteMinisterielleV2ChambreSalon,
+          mmSuiteMinisterielleV2Bureau,
+          mmSuiteMinisterielleV2Salon,
+          mmSuiteMinisterielleV2Lit,
+        ],
       },
       {
         id: 9,
