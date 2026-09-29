@@ -1,12 +1,14 @@
 import Footer from '../components/Footer'
 import { useHotel } from '../context/HotelContext'
 
-// Page « héritage / à propos » — construite à partir du texte officiel « À
-// propos de nous » de la plaquette commerciale Pefaco (reçue le 28/09/2026),
-// repris tel quel plutôt que reformulé, et de la photo de nuit de la façade
-// (extraite de la même plaquette, découpée pour retirer le badge décoratif
-// superposé dessus). Page propre à Maya-Maya : n'apparaît que si l'hôtel a un
-// champ `heritageText` (voir Navbar.jsx).
+// Page « héritage / à propos » — texte officiel « À propos de nous » de la
+// plaquette commerciale Pefaco (reçue le 28/09/2026), repris tel quel plutôt
+// que reformulé. Photos (façade + galerie façade/entrée/lobby)
+// mises à jour le 29/09/2026 avec de vraies photos de l'hôtel, sélectionnées
+// par Mr. Mbemba depuis la fiche Expedia officielle de l'hôtel (remplacent
+// une première version extraite de la plaquette PDF). Page propre à
+// Maya-Maya : n'apparaît que si l'hôtel a un champ `heritageText` (voir
+// Navbar.jsx).
 export default function Heritage() {
   const hotel = useHotel()
 
@@ -63,11 +65,35 @@ export default function Heritage() {
         )}
       </section>
 
+      {hotel.heritageGallery && hotel.heritageGallery.length > 0 && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(56px,8vw,96px)' }}>
+          <div
+            className="heritage-gallery"
+            style={{
+              maxWidth: 1100,
+              margin: '0 auto',
+              display: 'grid',
+              gridTemplateColumns: `repeat(${hotel.heritageGallery.length}, 1fr)`,
+              gap: 20,
+            }}
+          >
+            {hotel.heritageGallery.map((img, i) => (
+              <div key={i} style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
+                <img src={img} alt={hotel.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <Footer />
 
       <style>{`
         @media (max-width: 860px) {
           .heritage-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 700px) {
+          .heritage-gallery { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </main>

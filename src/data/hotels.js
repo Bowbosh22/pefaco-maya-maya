@@ -25,11 +25,20 @@ import oyoRestaurant from '../assets/images/oyo-restaurant.jpg'
 import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
 import mmSuiteLuxeMinisterielle from '../assets/images/maya-maya-suite-luxe-ministerielle.jpg'
 import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin.jpg'
-import mmHeritageNight from '../assets/images/maya-maya-heritage-night.jpg'
 import mmActivitesExpositions from '../assets/images/maya-maya-activites-expositions.jpg'
 import mmActivitesTennis from '../assets/images/maya-maya-activites-tennis.jpg'
 import mmActivitesSoirees from '../assets/images/maya-maya-activites-soirees.jpg'
-import mmActivitesGym from '../assets/images/maya-maya-activites-gym.jpg'
+import mmActivitesGym from '../assets/images/maya-maya-activites-gym-2.jpg'
+import mmActivitesPiscine from '../assets/images/maya-maya-activites-piscine.jpg'
+import mmActivitesSpa from '../assets/images/maya-maya-activites-spa.jpg'
+import mmHeritageFacadeSignage from '../assets/images/maya-maya-heritage-facade-signage.jpg'
+import mmHeritageFacadeJour from '../assets/images/maya-maya-heritage-facade-jour.jpg'
+import mmHeritageEntree from '../assets/images/maya-maya-heritage-entree.jpg'
+import mmHeritageLobby from '../assets/images/maya-maya-heritage-lobby.jpg'
+import mmVenuesBanquet from '../assets/images/maya-maya-venues-banquet.jpg'
+import mmVenuesConference from '../assets/images/maya-maya-venues-conference.jpg'
+import mmMenuChef from '../assets/images/maya-maya-menu-chef.jpg'
+import mmRestaurant4 from '../assets/images/maya-maya-restaurant-4.jpg'
 
 export const hotels = [
   {
@@ -43,7 +52,7 @@ et pour ceux qui veulent prendre leur temps.`,
     officialPhotos: false,
     heroImage: mayaMayaHero,
     restaurantImage: mmRestaurant1,
-    restaurantGallery: [mmRestaurant1, mmRestaurant2, mmRestaurant3],
+    restaurantGallery: [mmRestaurant1, mmRestaurant2, mmRestaurant3, mmRestaurant4],
     detenteImage: mmDetente,
     phone: '+242 05 604 8030 / +242 05 604 8035',
     phoneHref: 'tel:+242056048030',
@@ -96,12 +105,25 @@ et pour ceux qui veulent prendre leur temps.`,
     // barre de navigation (voir Navbar.jsx).
     heritageText:
       "Le Pefaco hôtel Maya-Maya est un véritable havre de luxe, situé en plein cœur de Brazzaville, en République du Congo. Alliant histoire riche, architecture moderne, décorations culturelles et services incomparables, nous offrons à nos clients un havre de paix exclusif.\n\nGrâce à des installations modernes et à notre engagement envers l'excellence, nous offrons une expérience inoubliable à chacun de nos visiteurs.",
-    heritageImage: mmHeritageNight,
+    // Photo remplacée le 29/09/2026 par une vraie photo de la façade avec les
+    // enseignes « PEFACO HOTEL » / « MAYA MAYA » (source : fiche Expedia
+    // officielle de l'hôtel, sélectionnée par Mr. Mbemba) — l'ancienne version
+    // extraite de la plaquette PDF (maya-maya-heritage-night.jpg) n'est plus
+    // utilisée.
+    heritageImage: mmHeritageFacadeSignage,
+    // Petite galerie ajoutée le 29/09/2026, même source — façade (enseigne
+    // « PEFACO HOTEL »), entrée/parking, lobby.
+    heritageGallery: [mmHeritageFacadeJour, mmHeritageEntree, mmHeritageLobby],
     // Onglet « Salles & Événements » — grille tarifaire officielle de la
     // plaquette Pefaco (28/09/2026), reprise telle quelle (« XAF » renommé
     // « FCFA » pour rester cohérent avec le reste du site — même monnaie).
     // Champ propre à Maya-Maya : sa seule présence détermine l'affichage du
     // lien dans la barre de navigation (voir Navbar.jsx).
+    // Galerie ajoutée le 29/09/2026 (source : fiche Expedia officielle de
+    // l'hôtel, sélectionnée par Mr. Mbemba) — comble l'absence de photo
+    // signalée initialement (les photos de salles de la plaquette étaient
+    // fondues sous le tableau de prix, inutilisables telles quelles).
+    venuesGallery: [mmVenuesBanquet, mmVenuesConference],
     venues: [
       { name: 'Moringa', ceremonyCapacity: '220 pers.', ceremonyPrice: '1 300 000 FCFA', conferenceCapacity: '300 pers.', conferencePrice: '1 300 000 FCFA' },
       { name: 'Bistro parisien', ceremonyCapacity: '180 pers.', ceremonyPrice: '1 500 000 FCFA', conferenceCapacity: null, conferencePrice: null },
@@ -123,6 +145,9 @@ et pour ceux qui veulent prendre leur temps.`,
     // « encroute Missalas du Chef ») — à faire confirmer par Pefaco plutôt
     // que deviné.
     eventMenu: {
+      // Photo d'ambiance ajoutée le 29/09/2026 pour l'arrière-plan de la carte
+      // fermée (source : fiche Expedia officielle de l'hôtel).
+      gateImage: mmMenuChef,
       tableMenus: [
         {
           label: 'Menu A',
@@ -241,6 +266,19 @@ et pour ceux qui veulent prendre leur temps.`,
           label: 'Salle de gym',
           image: mmActivitesGym,
           description: 'Équipements cardio et musculation, accessibles à toute heure pour les hôtes qui ne font pas de pause.',
+        },
+        // Deux cartes ajoutées le 29/09/2026 (source : fiche Expedia officielle
+        // de l'hôtel, sélectionnées par Mr. Mbemba) — la piscine et le
+        // spa/jacuzzi n'avaient pas encore de carte dédiée sur cette page.
+        {
+          label: 'Piscine',
+          image: mmActivitesPiscine,
+          description: "Bains de soleil en journée, ambiance plus feutrée le soir — la piscine reste au cœur de la vie de l'hôtel.",
+        },
+        {
+          label: 'Spa & bien-être',
+          image: mmActivitesSpa,
+          description: "Un bain à remous pour prolonger la détente, entre deux visites à la salle de sport ou à la piscine.",
         },
       ],
       happyHours: [

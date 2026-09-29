@@ -21,10 +21,12 @@ const headCellStyle = {
 
 // Page « Salles & Événements » — grille tarifaire officielle de la plaquette
 // Pefaco (28/09/2026), reprise telle quelle. Page propre à Maya-Maya :
-// n'apparaît que si l'hôtel a un champ `venues` (voir Navbar.jsx). Aucune
-// photo : les photos de salles de la plaquette sont fondues en transparence
-// sous le tableau de prix lui-même (choix de mise en page du document), donc
-// impossibles à extraire proprement sans artefact visuel.
+// n'apparaît que si l'hôtel a un champ `venues` (voir Navbar.jsx). Les photos
+// de salles de la plaquette étaient fondues en transparence sous le tableau
+// de prix (choix de mise en page du document), donc inutilisables telles
+// quelles — comblé le 29/09/2026 par une galerie (`venuesGallery`) de vraies
+// photos de salles de réception/conférence, sélectionnées par Mr. Mbemba
+// depuis la fiche Expedia officielle de l'hôtel.
 export default function Venues() {
   const hotel = useHotel()
   const venues = hotel.venues || []
@@ -57,6 +59,27 @@ export default function Venues() {
           Neuf espaces pour vos cérémonies, conférences et réceptions — capacités et tarifs communiqués par Pefaco.
         </p>
       </section>
+
+      {hotel.venuesGallery && hotel.venuesGallery.length > 0 && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
+          <div
+            className="venues-gallery"
+            style={{
+              maxWidth: 1100,
+              margin: '0 auto',
+              display: 'grid',
+              gridTemplateColumns: `repeat(${hotel.venuesGallery.length}, 1fr)`,
+              gap: 20,
+            }}
+          >
+            {hotel.venuesGallery.map((img, i) => (
+              <div key={i} style={{ aspectRatio: '3/2', overflow: 'hidden' }}>
+                <img src={img} alt={`${hotel.name} — salle de réception`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section style={{ padding: 'clamp(48px,7vw,80px) clamp(20px,4vw,56px)' }}>
         <div className="venues-table" style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -119,6 +142,7 @@ export default function Venues() {
         @media (max-width: 700px) {
           .venues-table { display: none !important; }
           .venues-cards { display: flex !important; }
+          .venues-gallery { grid-template-columns: 1fr !important; }
         }
       `}</style>
 

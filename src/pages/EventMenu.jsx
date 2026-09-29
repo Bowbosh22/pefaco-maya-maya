@@ -27,7 +27,9 @@ function CompactSections({ sections }) {
 // « Voir le menu », qui s'ouvre au clic sur une répartition en colonnes par
 // catégorie. Adapté à l'identité Pefaco (ivoire/or plutôt que le décor en
 // pierre du site de référence) et avec les tarifs conservés (absents de la
-// référence, mais indispensables ici).
+// référence, mais indispensables ici). Photo d'ambiance en arrière-plan de la
+// carte fermée ajoutée le 29/09/2026 (`menu.gateImage`, source : fiche
+// Expedia officielle de l'hôtel, sélectionnée par Mr. Mbemba).
 const CARD_MS = 380 // durée de la sortie de la carte / de la fermeture du contenu
 
 export default function EventMenu() {
@@ -78,7 +80,9 @@ export default function EventMenu() {
             alignItems: 'center',
             justifyContent: 'center',
             padding: 'calc(var(--nav-h) + 40px) clamp(20px,4vw,56px) 60px',
-            background: 'var(--sand)',
+            background: menu.gateImage
+              ? `linear-gradient(rgba(29,38,32,0.55), rgba(29,38,32,0.55)), url(${menu.gateImage}) center / cover`
+              : 'var(--sand)',
           }}
         >
           <div
