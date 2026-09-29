@@ -1,5 +1,5 @@
 import { useHotel } from '../context/HotelContext'
-import RoomCard from '../components/RoomCard'
+import RoomCarouselList from '../components/RoomCarousel'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
 
@@ -43,10 +43,8 @@ export default function Chambres() {
       </section>
 
       <section style={{ padding: 'clamp(56px,8vw,96px) clamp(20px,4vw,56px)' }}>
-        <div style={{ display: 'grid', gap: 48, gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
-          {hotel.rooms.map((room) => (
-            <RoomCard key={room.id} room={room} />
-          ))}
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <RoomCarouselList rooms={hotel.rooms} />
         </div>
       </section>
 
