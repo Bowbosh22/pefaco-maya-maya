@@ -24,7 +24,23 @@ import mmRestaurant3 from '../assets/images/maya-maya-restaurant-3.jpg'
 import oyoRestaurant from '../assets/images/oyo-restaurant.jpg'
 import mmStandardMbote from '../assets/images/maya-maya-standard-mbote.jpg'
 import mmSuiteLuxeMinisterielle from '../assets/images/maya-maya-suite-luxe-ministerielle.jpg'
-import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin.jpg'
+// Les 3 lignes suivantes remplacent, le 29/09/2026, les 3 photos "à titre
+// indicatif" signalées lors de l'intégration de la plaquette du 22/09 (Bilanga
+// Twin pax, Suite Ministérielle, Suite Présidentielle). Source : fiche Expedia
+// officielle de l'hôtel, section "Rooms" de la page de réservation — chaque
+// photo vient du type de chambre Expedia le plus proche de la catégorie du
+// site (validé avec Mr. Mbemba sur planche de comparaison) : Chambre Bilanga
+// Twin pax ↔ "Standard Twin Room" (vrais lits jumeaux, correspondance sûre) ;
+// Suite Ministérielle ↔ "Junior Suite" (salon séparé) ; Suite Présidentielle
+// ↔ "Superior Suite" (lustre, mur à motif) — ces deux dernières sont les
+// candidates les plus vraisemblables mais Expedia ne nomme pas ses catégories
+// comme la plaquette Pefaco, donc la certitude est moyenne (à confirmer par
+// Pefaco si possible). Les anciennes images partagées (mmSuiteLuxeMinisterielle,
+// mmSuitePanoramiquePresidentielle) restent utilisées par Suite de luxe et
+// Suite panoramique respectivement, qui elles sont confirmées.
+import mmBilangaTwin from '../assets/images/maya-maya-bilanga-twin-v2.jpg'
+import mmSuiteMinisterielleDediee from '../assets/images/maya-maya-suite-ministerielle.jpg'
+import mmSuitePresidentielleDediee from '../assets/images/maya-maya-suite-presidentielle.jpg'
 import mmActivitesExpositions from '../assets/images/maya-maya-activites-expositions.jpg'
 import mmActivitesTennis from '../assets/images/maya-maya-activites-tennis.jpg'
 import mmActivitesSoirees from '../assets/images/maya-maya-activites-soirees.jpg'
@@ -372,7 +388,6 @@ et pour ceux qui veulent prendre leur temps.`,
         priceUnit: 'la nuit',
         pricePreferential: 125000,
         pricePreferentialLabel: '125 000 FCFA',
-        photoIndicative: true,
         description:
           "Pensée pour les voyageurs en duo ou les collègues en déplacement professionnel. Climatisation, minibar et tout le confort Pefaco.",
         features: ['Climatisation', 'Wi-Fi haut débit', 'Minibar', 'Télévision écran plat'],
@@ -484,8 +499,8 @@ et pour ceux qui veulent prendre leur temps.`,
           'Service en chambre',
           'Accès prioritaire événements',
         ],
-        coverImage: mmSuiteLuxeMinisterielle,
-        images: [mmSuiteLuxeMinisterielle],
+        coverImage: mmSuiteMinisterielleDediee,
+        images: [mmSuiteMinisterielleDediee],
       },
       {
         id: 9,
@@ -510,8 +525,8 @@ et pour ceux qui veulent prendre leur temps.`,
           'Service en chambre dédié',
           'Accès prioritaire événements',
         ],
-        coverImage: mmSuitePanoramiquePresidentielle,
-        images: [mmSuitePanoramiquePresidentielle],
+        coverImage: mmSuitePresidentielleDediee,
+        images: [mmSuitePresidentielleDediee],
       },
     ],
   },
