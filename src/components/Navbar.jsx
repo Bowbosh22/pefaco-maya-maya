@@ -29,6 +29,7 @@ export default function Navbar() {
     ...(hotel.heritageText ? [{ to: `${base}/heritage`, label: hotel.heritageTitle || `L'Héritage ${hotel.shortName}` }] : []),
     ...(hotel.venues ? [{ to: `${base}/salles-evenements`, label: 'Salles & Événements' }] : []),
     ...(hotel.eventMenu ? [{ to: `${base}/menu-evenementiel`, label: 'Menu événementiel' }] : []),
+    ...(hotel.activities ? [{ to: `${base}/activites`, label: 'Activités' }] : []),
     { to: `${base}/contact`, label: 'Contact' },
   ]
   const reservationLink = `${base}/reservation`
@@ -61,19 +62,27 @@ export default function Navbar() {
       }}
     >
       <Link to={base} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: '50%',
-            border: '1.4px solid var(--gold)',
-            display: 'grid',
-            placeItems: 'center',
-            flexShrink: 0,
-          }}
-        >
-          <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)' }} />
-        </span>
+        {hotel.logoIcon ? (
+          <img
+            src={hotel.logoIcon}
+            alt={hotel.name}
+            style={{ width: 32, height: 32, objectFit: 'contain', flexShrink: 0 }}
+          />
+        ) : (
+          <span
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: '50%',
+              border: '1.4px solid var(--gold)',
+              display: 'grid',
+              placeItems: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)' }} />
+          </span>
+        )}
         <span style={{ fontFamily: 'var(--serif)', fontSize: 17, letterSpacing: '0.02em', color: navText }}>
           Pefaco <span style={{ fontStyle: 'italic', color: solid ? 'var(--terracotta)' : 'var(--gold-2)' }}>{hotel.shortName}</span>
         </span>

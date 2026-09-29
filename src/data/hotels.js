@@ -39,6 +39,14 @@ import mmVenuesBanquet from '../assets/images/maya-maya-venues-banquet.jpg'
 import mmVenuesConference from '../assets/images/maya-maya-venues-conference.jpg'
 import mmMenuChef from '../assets/images/maya-maya-menu-chef.jpg'
 import mmRestaurant4 from '../assets/images/maya-maya-restaurant-4.jpg'
+// Logo officiel Pefaco Hotel Maya Maya transmis par Mr. Mbemba le 29/09/2026.
+// `logoIcon` = juste le pictogramme (rogné depuis le logo complet) pour la
+// barre de navigation ; `logoFull` = le lockup complet (icône + nom + tagline
+// aéroport), conservé pour un usage futur éventuel (écran de sélection, pied
+// de page...). Uniquement Maya-Maya pour l'instant, Oyo n'a pas transmis de
+// logo — la Navbar retombe sur son pictogramme générique tant qu'il n'y en a pas.
+import mmLogoIcon from '../assets/images/maya-maya-logo-icon.png'
+import mmLogoFull from '../assets/images/maya-maya-logo-full.png'
 
 export const hotels = [
   {
@@ -50,6 +58,8 @@ export const hotels = [
     intro: `Un 5 étoiles pensé pour les voyageurs pressés —
 et pour ceux qui veulent prendre leur temps.`,
     officialPhotos: false,
+    logoIcon: mmLogoIcon,
+    logoFull: mmLogoFull,
     heroImage: mayaMayaHero,
     restaurantImage: mmRestaurant1,
     restaurantGallery: [mmRestaurant1, mmRestaurant2, mmRestaurant3, mmRestaurant4],
