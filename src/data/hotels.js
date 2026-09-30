@@ -147,6 +147,35 @@ et pour ceux qui veulent prendre leur temps.`,
     restaurantName: "Le restaurant de l'hôtel",
     restaurantText:
       "Un buffet international pensé pour les horaires de vol — service continu en journée, carte du soir pour les clients en étape comme pour les habitués de Brazzaville.",
+    // Détail des 3 restaurants + 1 bar de l'hôtel — contenu officiel du
+    // « Dossier de Presse PEFACO HOTEL MAYA MAYA 5 » transmis par Mr. Mbemba
+    // (30/09/2026), repris tel quel (noms, chefs, récompenses, capacités).
+    restaurantsDetail: [
+      {
+        name: 'Le Bistro Parisien',
+        cuisine: 'Cuisine française traditionnelle',
+        description:
+          "Cuisine française traditionnelle et plats bistronomiques, revisités par Rey Ouafi, notre Chef Exécutif, plusieurs fois récompensé. Restaurant climatisé, jusqu'à 250 personnes en banquet.",
+      },
+      {
+        name: 'Restaurant Bochelli',
+        cuisine: 'Cuisine italienne traditionnelle',
+        description:
+          "Pizzas au four traditionnel, pâtes maison et plats typiques italiens, par notre chef sicilien, lauréat du prix de l'Associazione Professionale Cuochi Italiani en 2011. Restaurant climatisé, jusqu'à 50 personnes.",
+      },
+      {
+        name: 'Le Moringa',
+        cuisine: "Cuisine congolaise et d'Afrique Centrale",
+        description:
+          "Décor africain-chic où se prennent les petits-déjeuners. Cet espace modulable a déjà accueilli défilés, vernissages, lancements de produits, l'Élection Miss Congo 2016 et des congrès présidentiels et ministériels — jusqu'à 250 personnes assises, 350 en cocktail.",
+      },
+    ],
+    barDetail: {
+      name: 'Essengo Bar',
+      tagline: 'Bar à cocktails',
+      description:
+        "Tous les vendredis soir, concert live gratuit du groupe WAKASSA de 19h30 à 22h30. Les vendredis et samedis, DJ Patchy anime la soirée de 18h à 23h, avec un Happy Hour de 18h à 20h.",
+    },
     amenitiesText:
       "Piscine extérieure et bar, pour souffler avant ou après le vol — ou simplement prendre le temps, entre deux rendez-vous à Brazzaville.",
     meetingsText:
@@ -185,6 +214,40 @@ et pour ceux qui veulent prendre leur temps.`,
     // Petite galerie ajoutée le 29/09/2026, même source — façade (enseigne
     // « PEFACO HOTEL »), entrée/parking, lobby.
     heritageGallery: [mmHeritageFacadeJour, mmHeritageEntree, mmHeritageLobby],
+    // Chiffres clés + vie culturelle + boutiques + présence en ligne — contenu
+    // officiel du « Dossier de Presse PEFACO HOTEL MAYA MAYA 5 » transmis par
+    // Mr. Mbemba (30/09/2026), repris tel quel (chiffres, noms, récompenses).
+    heritageStats: [
+      { value: '158', label: 'chambres et suites' },
+      { value: '74', label: 'Chambres Standard' },
+      { value: '42', label: 'Chambres Exécutive' },
+      { value: '42', label: 'Suites (38 Suites, 2 Ministérielles, 2 Présidentielles)' },
+    ],
+    heritageCulture:
+      "Surnommé « l'Art Hôtel » par ses habitués, le Pefaco Hotel Maya-Maya organise en moyenne 6 à 8 cocktails et vernissages par an, exposant les toiles d'artistes locaux et internationaux pendant environ un mois à chaque fois — des rendez-vous où se croisent le corps diplomatique et les autorités culturelles du pays.\n\nL'hôtel est aussi partenaire depuis 6 ans de la RIAC (Rencontre Internationale d'Art Contemporain), organisée par le collectif d'artistes « Les Ateliers SAHM », et offre à cette occasion 10 chambres pendant 3 semaines. Il a également accueilli le tournage de la télé-réalité « Qui veut devenir Star de Cinéma » (diffusée sur DRTV et TOP TV), en mettant une salle de séminaire à disposition des candidats.",
+    boutiques: [
+      {
+        name: "Boutique Hôtel « Nandjika »",
+        description:
+          "La marque d'une jeune créatrice congolaise, lauréate du prix de la Fashion Night de Brazzaville en 2015 (vêtements, sacs à main, accessoires). L'hôtel a été partenaire et sponsor du défilé de lancement de sa collection en mai 2017.",
+      },
+      {
+        name: "Corner Maxim's",
+        description: "Un corner Maxim's installé au Bistro Parisien.",
+      },
+      {
+        name: 'Corner produits italiens',
+        description: 'Une sélection de produits italiens au restaurant Le Bochelli.',
+      },
+    ],
+    socialProof: {
+      facebookFans: '30 170',
+      facebookName: 'Pefaco Hotel Maya Maya . Brazzaville . République du Congo',
+      youtube: [
+        { label: 'Film institutionnel (2 min 35)', url: 'https://youtu.be/ykL1RQjhS80' },
+        { label: 'Film long format (52 min)', url: 'https://youtu.be/ZasDtkrkQlg' },
+      ],
+    },
     // Onglet « Salles & Événements » — grille tarifaire officielle de la
     // plaquette Pefaco (28/09/2026), reprise telle quelle (« XAF » renommé
     // « FCFA » pour rester cohérent avec le reste du site — même monnaie).
@@ -195,6 +258,13 @@ et pour ceux qui veulent prendre leur temps.`,
     // signalée initialement (les photos de salles de la plaquette étaient
     // fondues sous le tableau de prix, inutilisables telles quelles).
     venuesGallery: [mmVenuesBanquet, mmVenuesConference],
+    // Paragraphe d'intro complémentaire — contenu officiel du « Dossier de
+    // Presse PEFACO HOTEL MAYA MAYA 5 » transmis par Mr. Mbemba (30/09/2026) :
+    // vue d'ensemble des salles de réunion et de l'équipe dédiée aux mariages,
+    // en complément (non en remplacement) du tableau de capacités/tarifs
+    // ci-dessous, issu de la grille tarifaire officielle.
+    venuesIntro:
+      "5 salles de réunion, dont une transformable, pouvant accueillir jusqu'à 160 personnes en table ronde ou 200 personnes en format théâtre — l'endroit idéal pour réunions d'affaires, conférences de presse et lancements de produits.\n\nPour les mariages, l'Espace MBONGUI peut accueillir jusqu'à 1 000 personnes : le Groupe Pefaco Hotels est l'un des rares groupes hôteliers à s'être doté d'un Directeur Artistique & Relations Publiques, entouré d'une brigade formée à la décoration florale et événementielle.",
     venues: [
       { name: 'Moringa', ceremonyCapacity: '220 pers.', ceremonyPrice: '1 300 000 FCFA', conferenceCapacity: '300 pers.', conferencePrice: '1 300 000 FCFA' },
       { name: 'Bistro parisien', ceremonyCapacity: '180 pers.', ceremonyPrice: '1 500 000 FCFA', conferenceCapacity: null, conferencePrice: null },
@@ -326,7 +396,7 @@ et pour ceux qui veulent prendre leur temps.`,
         {
           label: 'Terrain de tennis',
           image: mmActivitesTennis,
-          description: "Un terrain sur place pour commencer la journée par un service, ou la finir par un match sous les lumières.",
+          description: "Le Pefaco Hotel Maya-Maya est le seul hôtel de Brazzaville à disposer d'un terrain de tennis en quick — raquettes et balles fournies à la réception.",
         },
         {
           label: 'Soirées privées',
@@ -336,7 +406,7 @@ et pour ceux qui veulent prendre leur temps.`,
         {
           label: 'Salle de gym',
           image: mmActivitesGym,
-          description: 'Équipements cardio et musculation, accessibles à toute heure pour les hôtes qui ne font pas de pause.',
+          description: "15 appareils de cardio et musculation, avec un coach sportif présent tous les jours de 18h30 à 20h30, et le dimanche de 12h30 à 14h30.",
         },
         // Deux cartes ajoutées le 29/09/2026 (source : fiche Expedia officielle
         // de l'hôtel, sélectionnées par Mr. Mbemba) — la piscine et le
@@ -344,7 +414,7 @@ et pour ceux qui veulent prendre leur temps.`,
         {
           label: 'Piscine',
           image: mmActivitesPiscine,
-          description: "Bains de soleil en journée, ambiance plus feutrée le soir — la piscine reste au cœur de la vie de l'hôtel.",
+          description: "L'Espace MBONGUI : grand bassin et bassin enfant, bains de soleil, beds chillout et lits à baldaquin. Tous les dimanches, le Pool Jazz Brunch réunit un orchestre live et un buffet à volonté de 12h à 16h.",
         },
         {
           label: 'Spa & bien-être',

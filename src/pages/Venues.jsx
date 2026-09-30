@@ -60,6 +60,14 @@ export default function Venues() {
         </p>
       </section>
 
+      {hotel.venuesIntro && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
+          <p className="t-body" style={{ maxWidth: 760, margin: '0 auto', fontSize: 15, lineHeight: 1.85, whiteSpace: 'pre-line' }}>
+            {hotel.venuesIntro}
+          </p>
+        </section>
+      )}
+
       {hotel.venuesGallery && hotel.venuesGallery.length > 0 && (
         <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
           <div

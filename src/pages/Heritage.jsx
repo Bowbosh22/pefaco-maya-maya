@@ -86,6 +86,93 @@ export default function Heritage() {
         </section>
       )}
 
+      {hotel.heritageStats && hotel.heritageStats.length > 0 && (
+        <section style={{ padding: 'clamp(40px,6vw,64px) clamp(20px,4vw,56px)', background: 'var(--sand)' }}>
+          <div
+            className="heritage-stats"
+            style={{
+              maxWidth: 1100,
+              margin: '0 auto',
+              display: 'grid',
+              gridTemplateColumns: `repeat(${hotel.heritageStats.length}, 1fr)`,
+              gap: 24,
+              textAlign: 'center',
+            }}
+          >
+            {hotel.heritageStats.map((s, i) => (
+              <div key={i}>
+                <p style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(32px,4vw,48px)', color: 'var(--espresso)', margin: '0 0 6px' }}>
+                  {s.value}
+                </p>
+                <p style={{ fontSize: 12.5, color: 'var(--soft)', lineHeight: 1.5, margin: 0 }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hotel.heritageCulture && (
+        <section style={{ padding: 'clamp(56px,8vw,96px) clamp(20px,4vw,56px)' }}>
+          <div style={{ maxWidth: 760, margin: '0 auto' }}>
+            <p className="t-label" style={{ marginBottom: 16, textAlign: 'center' }}>
+              La vie culturelle de l'hôtel
+            </p>
+            <p className="t-body" style={{ fontSize: 16, lineHeight: 1.85, whiteSpace: 'pre-line' }}>
+              {hotel.heritageCulture}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {hotel.boutiques && hotel.boutiques.length > 0 && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(56px,8vw,96px)' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <p className="t-label" style={{ marginBottom: 24, textAlign: 'center' }}>
+              Boutiques de l'hôtel
+            </p>
+            <div
+              className="boutiques-grid"
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}
+            >
+              {hotel.boutiques.map((b) => (
+                <div key={b.name} style={{ textAlign: 'center' }}>
+                  <h3 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 19, color: 'var(--espresso)', marginBottom: 10 }}>
+                    {b.name}
+                  </h3>
+                  <p style={{ fontSize: 13.5, color: 'var(--soft)', lineHeight: 1.7, margin: 0 }}>{b.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {hotel.socialProof && (
+        <section style={{ padding: 'clamp(40px,6vw,64px) clamp(20px,4vw,56px)', background: 'var(--espresso)', color: 'var(--ivory)', textAlign: 'center' }}>
+          <p className="t-label" style={{ color: 'var(--gold-2)', marginBottom: 14 }}>
+            Suivez-nous
+          </p>
+          <p style={{ fontSize: 14, marginBottom: 18 }}>
+            {hotel.socialProof.facebookFans} fans sur Facebook — {hotel.socialProof.facebookName}
+          </p>
+          {hotel.socialProof.youtube && hotel.socialProof.youtube.length > 0 && (
+            <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {hotel.socialProof.youtube.map((v) => (
+                <a
+                  key={v.url}
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: 13, color: 'var(--ivory)', textDecoration: 'underline', textUnderlineOffset: 4 }}
+                >
+                  {v.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
       <Footer />
 
       <style>{`
@@ -94,6 +181,8 @@ export default function Heritage() {
         }
         @media (max-width: 700px) {
           .heritage-gallery { grid-template-columns: 1fr !important; }
+          .heritage-stats { grid-template-columns: repeat(2, 1fr) !important; row-gap: 32px !important; }
+          .boutiques-grid { grid-template-columns: 1fr !important; row-gap: 32px !important; }
         }
       `}</style>
     </main>
