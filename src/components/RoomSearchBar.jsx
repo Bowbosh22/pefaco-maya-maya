@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
+import { useStickySearchBar } from '../context/StickySearchBarContext'
 import GuestCounterRow from './GuestCounterRow'
 import { formatGuestsSummary } from '../utils/reservation'
 import { toISODate, getMonthGrid, monthLabel, formatDateShort, addMonths } from '../utils/calendar'
@@ -205,6 +206,9 @@ export default function RoomSearchBar() {
   const barRef = useRef(null)
   const [stuck, setStuck] = useState(false)
   const [barHeight, setBarHeight] = useState(64)
+  // Signale à WhatsAppFloat (rendu globalement) que la barre est collée en bas,
+  // pour qu'il se décale et évite le chevauchement sur mobile (voir capture 01/10).
+  const { setStuck: setGlobalStuck } = useStickySearchBar()
 
   useEffect(() => {
     if (barRef.current) setBarHeight(barRef.current.offsetHeight)
@@ -217,6 +221,13 @@ export default function RoomSearchBar() {
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    setGlobalStuck(stuck)
+    // En quittant la page (démontage), on efface l'état global pour que le
+    // bouton WhatsApp reprenne sa position normale ailleurs sur le site.
+    return () => setGlobalStuck(false)
+  }, [stuck, setGlobalStuck])
 
   const hasDates = arrival && departure
   const dateLabel = hasDates ? `${formatDateShort(arrival)} → ${formatDateShort(departure)}` : 'Ajouter des dates'

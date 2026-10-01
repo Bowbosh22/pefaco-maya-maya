@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useParams } from 'react-router-dom'
 import { findHotelBySlug } from '../data/hotels'
 import { HotelProvider } from '../context/HotelContext'
+import { StickySearchBarProvider } from '../context/StickySearchBarContext'
 import Navbar from '../components/Navbar'
 import ScrollToTop from '../components/ScrollToTop'
 import WhatsAppFloat from '../components/WhatsAppFloat'
@@ -14,11 +15,13 @@ export default function HotelLayout() {
 
   return (
     <HotelProvider hotel={hotel}>
-      <Navbar />
-      <ScrollToTop />
-      <Outlet />
-      <WhatsAppFloat />
-      <ReservationReminderBanner />
+      <StickySearchBarProvider>
+        <Navbar />
+        <ScrollToTop />
+        <Outlet />
+        <WhatsAppFloat />
+        <ReservationReminderBanner />
+      </StickySearchBarProvider>
     </HotelProvider>
   )
 }

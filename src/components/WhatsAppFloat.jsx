@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 import { useReservationReminder } from '../context/ReservationDraftContext'
+import { useStickySearchBar } from '../context/StickySearchBarContext'
 
 const WHATSAPP_ICON = (
   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,11 +19,14 @@ const WHATSAPP_ICON = (
 export default function WhatsAppFloat() {
   const hotel = useHotel()
   const { show: showReminder } = useReservationReminder()
+  const { stuck: searchBarStuck } = useStickySearchBar()
   const style = {
     position: 'fixed',
     right: 'clamp(16px, 4vw, 28px)',
-    // Remonte au-dessus de la bannière de rappel de réservation quand elle est affichée.
-    bottom: showReminder ? 'clamp(84px, 16vw, 108px)' : 'clamp(16px, 4vw, 28px)',
+    // Remonte au-dessus de la bannière de rappel de réservation ou de la barre de
+    // recherche QUAND/VOYAGEURS quand l'une des deux est collée en bas de l'écran,
+    // pour éviter qu'elles se chevauchent sur mobile.
+    bottom: showReminder || searchBarStuck ? 'clamp(84px, 16vw, 108px)' : 'clamp(16px, 4vw, 28px)',
     width: 60,
     height: 60,
     borderRadius: '50%',
