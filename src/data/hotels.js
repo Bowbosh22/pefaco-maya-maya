@@ -143,8 +143,14 @@ et pour ceux qui veulent prendre leur temps.`,
     // (l'hôtel est déjà référencé sur Google/Booking/TripAdvisor sous ce nom).
     mapQuery: 'Pefaco Hotel Maya Maya, Brazzaville, Congo',
     reception: '24h/24, 7j/7',
+    // practicalInfo recoupé le 01/10/2026 avec les fiches Expedia et Booking.com de l'hôtel
+    // (deux sources indépendantes, concordantes) : check-in corrigé de 14h00 à 13h00 ; check-out,
+    // parking et politique animaux déjà exacts, confirmés tels quels. Seule la politique
+    // d'annulation reste une valeur générique non confirmée — aucune des deux plateformes ne donne
+    // de règle fixe (Booking renvoie à "ça dépend des dates choisies") : à obtenir directement
+    // auprès de Pefaco.
     practicalInfo: {
-      checkIn: 'À partir de 14h00',
+      checkIn: 'À partir de 13h00',
       checkOut: 'Avant 12h00',
       cancellation:
         "Annulation gratuite jusqu'à 48h avant l'arrivée ; au-delà, la première nuit est facturée.",
