@@ -89,6 +89,11 @@ import mmSuitePresidentielleExtra from '../assets/images/maya-maya-suite-preside
 import mmActivitesExpositions from '../assets/images/maya-maya-activites-expositions.jpg'
 import mmActivitesTennis from '../assets/images/maya-maya-activites-tennis.jpg'
 import mmActivitesSoirees from '../assets/images/maya-maya-activites-soirees.jpg'
+// Photo distincte pour la carte "Soirées privées" (01/10/2026) : extraite de la plaquette
+// officielle Pefaco (page "Autres activités"), une vraie photo d'événement privé en intérieur à
+// l'hôtel — jusqu'ici cette carte et le hero de la page Activités partageaient la même photo
+// (terrasse de nuit), ce qui répétait deux fois la même image sur la page.
+import mmActivitesSoireesCard from '../assets/images/maya-maya-activites-soirees-privees.jpg'
 import mmActivitesGym from '../assets/images/maya-maya-activites-gym-2.jpg'
 import mmActivitesPiscine from '../assets/images/maya-maya-activites-piscine.jpg'
 import mmActivitesSpa from '../assets/images/maya-maya-activites-spa.jpg'
@@ -424,7 +429,7 @@ et pour ceux qui veulent prendre leur temps.`,
         },
         {
           label: 'Soirées privées',
-          image: mmActivitesSoirees,
+          image: mmActivitesSoireesCard,
           description: "Terrasses dressées et éclairage d'ambiance : l'hôtel se transforme, le temps d'un événement, en décor sur mesure.",
         },
         {
