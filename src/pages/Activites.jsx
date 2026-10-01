@@ -140,7 +140,7 @@ export default function Activites() {
                   {h.music}
                 </p>
                 <p style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(30px,3.4vw,40px)', margin: '0 0 6px' }}>{h.day}</p>
-                <p style={{ fontSize: 13, color: 'var(--gold-2)', fontWeight: 600, marginBottom: 24, minHeight: 18 }}>{h.hours || ' '}</p>
+                <p style={{ fontSize: 13, color: 'var(--gold-2)', fontWeight: 600, marginBottom: 24, minHeight: 18 }}>{h.hours || ' '}</p>
                 <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {h.perks.map((p) => (
                     <li key={p} style={{ fontSize: 12.5, color: 'rgba(248,243,234,0.75)', lineHeight: 1.6 }}>
