@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 import Footer from '../components/Footer'
 
@@ -18,7 +17,7 @@ export default function Activites() {
 
   if (!activities) return null
 
-  const { amenities, happyHours, specialEvent, heroImage } = activities
+  const { amenities, happyHours, heroImage } = activities
 
   return (
     <main>
@@ -151,52 +150,6 @@ export default function Activites() {
                 </ul>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Dim Fun — clôture plein cadre */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '64vh',
-          display: 'flex',
-          alignItems: 'center',
-          padding: 'clamp(56px,8vw,96px) clamp(20px,4vw,56px)',
-          backgroundImage: `linear-gradient(90deg, rgba(29,38,32,0.88) 0%, rgba(29,38,32,0.55) 55%, rgba(29,38,32,0.25) 100%), url(${hotel.heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 55%',
-        }}
-      >
-        <div style={{ maxWidth: 600 }}>
-          <p className="t-label" style={{ color: 'var(--gold-2)', marginBottom: 12 }}>
-            {specialEvent.tagline}
-          </p>
-          <h2
-            style={{
-              fontFamily: 'var(--serif)',
-              fontStyle: 'italic',
-              fontWeight: 400,
-              fontSize: 'clamp(44px,6vw,80px)',
-              color: 'var(--ivory)',
-              marginBottom: 20,
-              lineHeight: 1,
-            }}
-          >
-            {specialEvent.name}
-          </h2>
-          <p style={{ fontSize: 14, color: 'rgba(248,243,234,0.85)', lineHeight: 1.8, marginBottom: 28, maxWidth: 440 }}>
-            {specialEvent.date} · {specialEvent.hours}
-            <br />
-            {specialEvent.description}
-          </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
-            <p style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px,3vw,34px)', color: 'var(--gold-2)', margin: 0 }}>
-              {specialEvent.price} <span style={{ fontSize: 12, color: 'rgba(248,243,234,0.6)', fontFamily: 'var(--sans)' }}>/ personne</span>
-            </p>
-            <Link to={`/${hotel.slug}/contact`} className="btn-outline" style={{ borderColor: 'var(--ivory)', color: 'var(--ivory)' }}>
-              Réserver ma place
-            </Link>
           </div>
         </div>
       </section>

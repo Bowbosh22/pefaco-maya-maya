@@ -466,14 +466,6 @@ et pour ceux qui veulent prendre leur temps.`,
           perks: ['2 cocktails achetés, 1 cocktail offert', '1 Beaufort acheté, 1 Beaufort offert', 'Tombola — plusieurs lots à gagner'],
         },
       ],
-      specialEvent: {
-        name: 'Dim Fun',
-        tagline: 'Spécial Fête des Mères',
-        date: 'Dimanche 25 mai',
-        hours: 'De midi à 16h',
-        price: '20 000 FCFA',
-        description: 'Piscine · Barbecue à volonté · Accompagnements · Crudités · Salade composée · Fruits · Boisson locale',
-      },
     },
     rooms: [
       {
