@@ -96,6 +96,8 @@ import mmHeritageFacadeSignage from '../assets/images/maya-maya-heritage-facade-
 import mmHeritageFacadeJour from '../assets/images/maya-maya-heritage-facade-jour.jpg'
 import mmHeritageEntree from '../assets/images/maya-maya-heritage-entree.jpg'
 import mmHeritageLobby from '../assets/images/maya-maya-heritage-lobby.jpg'
+import mmDestinationCongo from '../assets/images/maya-maya-destination-congo.png'
+import mmHeritageArt from '../assets/images/maya-maya-heritage-art.png'
 import mmVenuesBanquet from '../assets/images/maya-maya-venues-banquet.jpg'
 import mmVenuesConference from '../assets/images/maya-maya-venues-conference.jpg'
 import mmMenuChef from '../assets/images/maya-maya-menu-chef.jpg'
@@ -156,18 +158,24 @@ et pour ceux qui veulent prendre leur temps.`,
         cuisine: 'Cuisine française traditionnelle',
         description:
           "Cuisine française traditionnelle et plats bistronomiques, revisités par Rey Ouafi, notre Chef Exécutif, plusieurs fois récompensé. Restaurant climatisé, jusqu'à 250 personnes en banquet.",
+        image: mmRestaurant1,
+        photoIndicative: true,
       },
       {
         name: 'Restaurant Bochelli',
         cuisine: 'Cuisine italienne traditionnelle',
         description:
           "Pizzas au four traditionnel, pâtes maison et plats typiques italiens, par notre chef sicilien, lauréat du prix de l'Associazione Professionale Cuochi Italiani en 2011. Restaurant climatisé, jusqu'à 50 personnes.",
+        image: mmRestaurant2,
+        photoIndicative: true,
       },
       {
         name: 'Le Moringa',
         cuisine: "Cuisine congolaise et d'Afrique Centrale",
         description:
           "Décor africain-chic où se prennent les petits-déjeuners. Cet espace modulable a déjà accueilli défilés, vernissages, lancements de produits, l'Élection Miss Congo 2016 et des congrès présidentiels et ministériels — jusqu'à 250 personnes assises, 350 en cocktail.",
+        image: mmRestaurant3,
+        photoIndicative: true,
       },
     ],
     barDetail: {
@@ -175,6 +183,8 @@ et pour ceux qui veulent prendre leur temps.`,
       tagline: 'Bar à cocktails',
       description:
         "Tous les vendredis soir, concert live gratuit du groupe WAKASSA de 19h30 à 22h30. Les vendredis et samedis, DJ Patchy anime la soirée de 18h à 23h, avec un Happy Hour de 18h à 20h.",
+      image: mmRestaurant4,
+      photoIndicative: true,
     },
     amenitiesText:
       "Piscine extérieure et bar, pour souffler avant ou après le vol — ou simplement prendre le temps, entre deux rendez-vous à Brazzaville.",
@@ -212,8 +222,22 @@ et pour ceux qui veulent prendre leur temps.`,
     // utilisée.
     heritageImage: mmHeritageFacadeSignage,
     // Petite galerie ajoutée le 29/09/2026, même source — façade (enseigne
-    // « PEFACO HOTEL »), entrée/parking, lobby.
+    // « PEFACO HOTEL »), entrée/parking, lobby. N'est plus affichée sur la page
+    // Héritage depuis le 01/10/2026 (remplacée par le bloc Destination +
+    // Histoire ci-dessous), conservée ici au cas où.
     heritageGallery: [mmHeritageFacadeJour, mmHeritageEntree, mmHeritageLobby],
+    // Bloc « Destination » + photo d'art en tête de la page Héritage, ajoutés
+    // le 01/10/2026 (demande explicite, référence : belmond.com/en/stories).
+    // Photos fournies par Mr. Mbemba à titre de démonstration de mise en page
+    // (gorille / toile de street-art représentant un singe) — PAS des photos
+    // de l'hôtel : à remplacer par de vraies photos avant mise en ligne si
+    // Pefaco ne valide pas ces visuels tels quels.
+    destinationLabel: 'Destination',
+    destinationTitle: "Au cœur de l'Afrique Centrale",
+    destinationText:
+      "Entre fleuve Congo et forêts tropicales, Brazzaville ouvre la porte à l'une des régions les plus riches en biodiversité du continent.",
+    destinationImage: mmDestinationCongo,
+    heritageStoryImage: mmHeritageArt,
     // Chiffres clés + vie culturelle + boutiques + présence en ligne — contenu
     // officiel du « Dossier de Presse PEFACO HOTEL MAYA MAYA 5 » transmis par
     // Mr. Mbemba (30/09/2026), repris tel quel (chiffres, noms, récompenses).
