@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import Heritage from './pages/Heritage'
 import Venues from './pages/Venues'
 import EventMenu from './pages/EventMenu'
+import Activites from './pages/Activites'
 import { ReservationDraftProvider } from './context/ReservationDraftContext'
 
 // HashRouter est conservé volontairement : GitHub Pages ne sait pas router
@@ -30,6 +31,7 @@ function AppRoutes() {
         <Route path="heritage" element={<Heritage />} />
         <Route path="salles-evenements" element={<Venues />} />
         <Route path="menu-evenementiel" element={<EventMenu />} />
+        <Route path="activites" element={<Activites />} />
       </Route>
     </Routes>
   )
