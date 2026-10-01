@@ -41,7 +41,10 @@ function IconClose() {
 
 // Carrousel photo réel pour une chambre : flèches, pastilles de pagination, plein écran.
 // Inspiré de l'arborescence de la page "Rooms" de larkhotels.com (photo + infos + 2 CTA, empilés par chambre).
-function PhotoCarousel({ images, alt, indicative, onOpenLightbox }) {
+// Exporté (en plus de RoomCarouselList par défaut) pour être réutilisé par les cartes de la grille
+// "Et aussi" de la page Chambres (01/10/2026), qui reprend la même mécanique de carrousel/lightbox
+// mais avec un gabarit de carte différent (façon la-samanna.com).
+export function PhotoCarousel({ images, alt, indicative, onOpenLightbox }) {
   const [index, setIndex] = useState(0)
   const hasMultiple = images.length > 1
 
@@ -170,7 +173,7 @@ function PhotoCarousel({ images, alt, indicative, onOpenLightbox }) {
 }
 
 // Visionneuse plein écran (lightbox) : mêmes flèches + pastilles, sur fond sombre.
-function Lightbox({ images, alt, startIndex, onClose }) {
+export function Lightbox({ images, alt, startIndex, onClose }) {
   const [index, setIndex] = useState(startIndex)
   const hasMultiple = images.length > 1
 
@@ -372,7 +375,7 @@ export default function RoomCarouselList({ rooms }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(420px, 100%), 1fr))',
         gap: 'clamp(32px,4vw,56px) clamp(24px,3vw,40px)',
       }}
       className="room-grid"
