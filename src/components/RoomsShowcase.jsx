@@ -55,11 +55,28 @@ export default function RoomsShowcase() {
           {hotel.rooms.length} catégories, du séjour d'une nuit à l'étape prolongée. Toutes climatisées, à {hotel.city}.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Link to={`${base}/chambres`} className="btn-solid btn-gold">
+          <Link to={`${base}/chambres`} className="btn-solid rooms-banner-cta">
             Découvrir nos chambres
           </Link>
         </div>
       </div>
+
+      <style>{`
+        /* Bouton doré semi-transparent (demande du 05/10/2026) : on garde la structure de
+           .btn-solid (padding, lettrage) mais le fond laisse deviner la photo derrière, au lieu
+           d'un aplat doré opaque. Le double sélecteur l'emporte sur .btn-solid quel que soit
+           l'ordre des règles dans la feuille de style globale. */
+        .rooms-banner-cta.btn-solid {
+          background: rgba(185, 148, 86, 0.38);
+          border-color: rgba(185, 148, 86, 0.75);
+          backdrop-filter: blur(3px);
+          -webkit-backdrop-filter: blur(3px);
+        }
+        .rooms-banner-cta.btn-solid:hover {
+          background: rgba(205, 173, 117, 0.55);
+          border-color: rgba(205, 173, 117, 0.9);
+        }
+      `}</style>
     </section>
   )
 }
