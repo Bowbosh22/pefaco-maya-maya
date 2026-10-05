@@ -48,7 +48,16 @@ export default function PropertySelector() {
           >
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: t.gold }} />
           </span>
-          <span style={{ fontFamily: 'var(--serif)', fontSize: 17, color: t.ivory, letterSpacing: '0.02em' }}>
+          <span
+            style={{
+              fontFamily: 'var(--sans)',
+              fontWeight: 700,
+              fontSize: 14,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: t.ivory,
+            }}
+          >
             Pefaco
           </span>
         </div>
@@ -67,7 +76,6 @@ export default function PropertySelector() {
         <h1
           style={{
             fontFamily: 'var(--serif)',
-            fontStyle: 'italic',
             fontWeight: 400,
             color: t.ivory,
             fontSize: 'clamp(26px,4vw,44px)',
@@ -121,7 +129,7 @@ export default function PropertySelector() {
             >
               {reveal.hotel.city}
             </p>
-            <h2 style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(28px,4.5vw,48px)' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontWeight: 400, fontSize: 'clamp(28px,4.5vw,48px)' }}>
               {reveal.hotel.name}
             </h2>
           </div>

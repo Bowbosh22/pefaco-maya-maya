@@ -92,7 +92,6 @@ export default function Home() {
           <p
             style={{
               fontFamily: 'var(--serif)',
-              fontStyle: 'italic',
               fontSize: 'clamp(20px,2.4vw,28px)',
               lineHeight: 1.5,
               color: 'var(--espresso)',

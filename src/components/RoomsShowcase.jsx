@@ -42,7 +42,6 @@ export default function RoomsShowcase() {
           style={{
             fontFamily: 'var(--serif)',
             fontWeight: 400,
-            fontStyle: 'italic',
             fontSize: 'clamp(28px,4vw,46px)',
             color: 'var(--ivory)',
             marginBottom: 20,

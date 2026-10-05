@@ -119,7 +119,6 @@ export default function DoorPanel({
         <h2
           style={{
             fontFamily: 'var(--serif)',
-            fontStyle: 'italic',
             fontWeight: 400,
             fontSize: 'clamp(24px,3.2vw,36px)',
             marginBottom: 16,

@@ -106,8 +106,19 @@ export default function Reservation() {
     >
       <div style={{ position: 'sticky', top: 0, zIndex: 2, background: 'var(--ivory)', borderBottom: '1px solid var(--line)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '18px clamp(20px,4vw,56px) 0' }}>
-          <span style={{ fontFamily: 'var(--serif)', fontSize: 17, color: 'var(--espresso)', flexShrink: 0 }}>
-            Pefaco <span style={{ fontStyle: 'italic', color: 'var(--terracotta)' }}>{hotel.shortName}</span>
+          <span
+            style={{
+              fontFamily: 'var(--sans)',
+              fontWeight: 700,
+              fontSize: 13,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: 'var(--espresso)',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Pefaco <span style={{ color: 'var(--terracotta)' }}>{hotel.shortName}</span>
           </span>
           <div
             style={{

@@ -130,7 +130,6 @@ export default function EventMenu() {
                 border: 'none',
                 cursor: 'pointer',
                 fontFamily: 'var(--serif)',
-                fontStyle: 'italic',
                 fontSize: 20,
                 color: 'var(--espresso)',
               }}

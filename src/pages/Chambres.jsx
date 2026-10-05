@@ -122,7 +122,7 @@ export default function Chambres() {
       <style>{`
         .section-intro { max-width: 1100px; margin: 0 auto; padding: clamp(40px,6vw,56px) clamp(20px,4vw,56px) 8px; }
         .section-intro p.lead {
-          font-family: var(--serif); font-weight: 400; font-style: italic;
+          font-family: var(--serif); font-weight: 400;
           font-size: clamp(18px,2vw,22px); color: var(--espresso); line-height: 1.6;
           max-width: 1020px; margin: 14px 0 0;
         }
@@ -145,7 +145,7 @@ export default function Chambres() {
 
         .feat-info { max-width: 640px; margin: 32px auto 0; text-align: center; padding: 0 24px; }
         .feat-info h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(24px,3vw,34px); color: var(--espresso); margin: 6px 0 6px; }
-        .feat-info .tagline { font-family: var(--serif); font-style: italic; color: var(--terracotta); margin: 0 0 14px; font-size: 15px; }
+        .feat-info .tagline { font-family: var(--serif); color: var(--terracotta); margin: 0 0 14px; font-size: 15px; }
         .feat-info .desc { font-size: 14.5px; color: var(--soft); line-height: 1.8; margin: 0 0 16px; }
         .feat-info .price { font-size: 14px; font-weight: 700; color: var(--terracotta); margin: 0; font-family: var(--sans); }
         .feat-info .pref { font-size: 11.5px; color: var(--soft); margin: 4px 0 18px; }
