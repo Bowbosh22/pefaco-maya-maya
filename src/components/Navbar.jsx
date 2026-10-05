@@ -61,10 +61,22 @@ export default function Navbar() {
         transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease)',
       }}
     >
-      <Link
-        to={base}
-        style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, marginRight: 'clamp(16px, 3vw, 44px)' }}
+      {/* Bouton menu (demande du 05/10/2026, inspirée de oneandonlyresorts.com) : sur toutes les
+          tailles d'écran, la navbar n'affiche plus la liste des onglets — seulement ce bouton
+          burger, le logo/titre, et "Changer d'hôtel" (comme leur sélecteur "One&Only Global" en
+          haut de page). Les onglets passent dans le panneau plein écran ci-dessous, révélés un par
+          un (animation en cascade) à l'ouverture. */}
+      <button
+        aria-label="Menu"
+        onClick={() => setMenuOpen((open) => !open)}
+        className="nav-burger"
+        style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: 8, marginRight: 'clamp(14px,2.4vw,28px)', flexShrink: 0 }}
       >
+        <span style={{ width: 22, height: 1.4, background: navText, transition: 'background 0.3s ease' }} />
+        <span style={{ width: 22, height: 1.4, background: navText, transition: 'background 0.3s ease' }} />
+      </button>
+
+      <Link to={base} style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
         {hotel.logoIcon ? (
           <img
             src={hotel.logoIcon}
@@ -105,91 +117,97 @@ export default function Navbar() {
         </span>
       </Link>
 
-      <nav
-        className="nav-desktop"
-        style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 32 }}
+      <Link
+        to="/"
+        style={{
+          marginLeft: 'auto',
+          fontSize: 11,
+          fontWeight: 600,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          color: navTextSoft,
+          borderBottom: `1px solid ${solid ? 'var(--line)' : 'rgba(248,243,234,0.35)'}`,
+          paddingBottom: 2,
+          whiteSpace: 'nowrap',
+        }}
       >
-        {links.map((link) => (
-          <Link
-            key={link.to}
-            to={link.to}
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: navText,
-            }}
-          >
-            {link.label}
-          </Link>
-        ))}
-        <Link
-          to="/"
-          style={{
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: navTextSoft,
-            borderBottom: `1px solid ${solid ? 'var(--line)' : 'rgba(248,243,234,0.35)'}`,
-            paddingBottom: 2,
-          }}
-        >
-          Changer d'hôtel
-        </Link>
-        <Link to={reservationLink} className="btn-solid">
-          Réserver
-        </Link>
-      </nav>
-
-      <button
-        aria-label="Menu"
-        onClick={() => setMenuOpen((open) => !open)}
-        className="nav-burger"
-        style={{ marginLeft: 'auto', display: 'none', flexDirection: 'column', gap: 5, padding: 8 }}
-      >
-        <span style={{ width: 22, height: 1.4, background: navText }} />
-        <span style={{ width: 22, height: 1.4, background: navText }} />
-      </button>
+        Changer d'hôtel
+      </Link>
 
       {menuOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 'var(--nav-h)',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'var(--ivory)',
-            zIndex: 99,
-            padding: '32px 24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 28,
-          }}
-        >
-          {links.map((link) => (
-            <Link key={link.to} to={link.to} style={{ fontFamily: 'var(--serif)', fontSize: 26, color: 'var(--espresso)' }}>
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            to="/"
-            style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--soft)' }}
+        <>
+          <div
+            className="nav-menu-backdrop"
+            onClick={() => setMenuOpen(false)}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(29,38,32,0.45)', backdropFilter: 'blur(2px)', zIndex: 98 }}
+          />
+          <div
+            className="nav-menu-panel"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              background: 'var(--ivory)',
+              zIndex: 99,
+              padding: '28px 32px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              overflowY: 'auto',
+              boxShadow: '12px 0 40px rgba(29,38,32,0.18)',
+            }}
           >
-            Changer d'hôtel
-          </Link>
-          <Link to={reservationLink} className="btn-solid" style={{ marginTop: 12 }}>
-            Réserver
-          </Link>
-        </div>
+            <button
+              aria-label="Fermer le menu"
+              onClick={() => setMenuOpen(false)}
+              style={{ alignSelf: 'flex-start', fontSize: 22, color: 'var(--espresso)', padding: 8, marginLeft: -8, marginBottom: 'clamp(24px,5vh,48px)' }}
+            >
+              ✕
+            </button>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: 22, marginBottom: 36 }}>
+              {links.map((link, i) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="nav-menu-item"
+                  style={{
+                    fontFamily: 'var(--serif)',
+                    fontSize: 'clamp(22px,3vw,28px)',
+                    color: 'var(--espresso)',
+                    animationDelay: `${90 + i * 70}ms`,
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <div style={{ height: 1, background: 'var(--line)', marginBottom: 28 }} />
+            <Link
+              to={reservationLink}
+              className="btn-solid nav-menu-item"
+              style={{ justifyContent: 'center', animationDelay: `${90 + links.length * 70}ms` }}
+            >
+              Réserver
+            </Link>
+          </div>
+        </>
       )}
 
       <style>{`
-        @media (max-width: 860px) {
-          .nav-desktop { display: none !important; }
-          .nav-burger { display: flex !important; }
+        @keyframes navMenuItemIn {
+          from { opacity: 0; transform: translateY(14px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-menu-item { opacity: 0; animation: navMenuItemIn 0.55s var(--ease) forwards; }
+
+        @keyframes navMenuPanelIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+        .nav-menu-panel { width: min(440px, 86vw); animation: navMenuPanelIn 0.4s var(--ease) forwards; }
+
+        @keyframes navMenuBackdropIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-menu-backdrop { animation: navMenuBackdropIn 0.3s ease forwards; }
+
+        @media (max-width: 560px) {
+          .nav-menu-panel { width: 100vw; }
         }
       `}</style>
     </header>
