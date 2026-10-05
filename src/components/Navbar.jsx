@@ -61,7 +61,10 @@ export default function Navbar() {
         transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease)',
       }}
     >
-      <Link to={base} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <Link
+        to={base}
+        style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, marginRight: 'clamp(16px, 3vw, 44px)' }}
+      >
         {hotel.logoIcon ? (
           <img
             src={hotel.logoIcon}
@@ -83,8 +86,22 @@ export default function Navbar() {
             <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)' }} />
           </span>
         )}
-        <span style={{ fontFamily: 'var(--serif)', fontSize: 17, letterSpacing: '0.02em', color: navText }}>
-          Pefaco <span style={{ fontStyle: 'italic', color: solid ? 'var(--terracotta)' : 'var(--gold-2)' }}>{hotel.shortName}</span>
+        {/* Typographie alignée sur le logo officiel (demande du 05/10/2026) : sans-serif
+            gras et majuscule, comme "PEFACO HOTEL MAYA MAYA" sur l'emblème, au lieu du
+            serif italique utilisé jusqu'ici. */}
+        <span
+          style={{
+            fontFamily: 'var(--sans)',
+            fontWeight: 700,
+            fontSize: 14,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: navText,
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+          }}
+        >
+          Pefaco <span style={{ color: solid ? 'var(--terracotta)' : 'var(--gold-2)' }}>{hotel.shortName}</span>
         </span>
       </Link>
 

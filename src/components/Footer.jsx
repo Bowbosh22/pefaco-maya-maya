@@ -24,8 +24,19 @@ export default function Footer() {
         }}
       >
         <div>
-          <p style={{ fontFamily: 'var(--serif)', fontSize: 18, color: 'var(--ivory)', marginBottom: 12 }}>
-            Pefaco <span style={{ fontStyle: 'italic', color: 'var(--gold-2)' }}>{hotel.shortName}</span>
+          {/* Typographie alignée sur le logo officiel (demande du 05/10/2026), cf. Navbar.jsx. */}
+          <p
+            style={{
+              fontFamily: 'var(--sans)',
+              fontWeight: 700,
+              fontSize: 15,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: 'var(--ivory)',
+              marginBottom: 12,
+            }}
+          >
+            Pefaco <span style={{ color: 'var(--gold-2)' }}>{hotel.shortName}</span>
           </p>
           <p className="t-body" style={{ color: 'rgba(248,243,234,0.6)', fontSize: 13 }}>
             Hôtel 5 étoiles — {hotel.city}.
