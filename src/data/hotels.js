@@ -209,18 +209,24 @@ et pour ceux qui veulent prendre leur temps.`,
     locationTitle: 'L\'étape aérienne, sans stress.',
     locationText:
       "À deux minutes de l'aéroport international de Maya-Maya. Le vol atterrit, la navette attend, la chambre est déjà prête.",
+    // Chaque carte du carrousel "Trois façons d'y séjourner" (accueil) redirige vers l'onglet
+    // correspondant (demande du 05/10/2026) — "L'étape d'affaires" devient "Histoire" et pointe
+    // vers L'Héritage Maya-Maya plutôt que de dupliquer un thème déjà couvert par le hero.
     experiences: [
       {
-        title: "L'étape d'affaires",
-        text: "Bureau, Wi-Fi haut débit, climatisation — tout pour une nuit efficace entre deux vols.",
+        title: 'Histoire',
+        text: "Architecture moderne, décorations culturelles et un riche passé — l'âme du Maya-Maya à découvrir.",
+        link: '/heritage',
       },
       {
         title: 'La détente',
         text: "Piscine extérieure et bar, pour souffler avant ou après le vol.",
+        link: '/activites',
       },
       {
         title: 'Réunions & groupes',
         text: "Espaces de réception et navette aéroport, pour les séjours en équipe.",
+        link: '/salles-evenements',
       },
     ],
     testimonial:
@@ -754,18 +760,23 @@ dans le département de la Cuvette.`,
     locationTitle: "Sur les rives de l'Alima, à sept minutes de l'aéroport.",
     locationText:
       "Un cadre calme au bord de l'eau, dans le département de la Cuvette — loin de l'agitation, mais jamais loin de l'essentiel.",
+    // Oyo n'a pas de pages Héritage / Activités / Salles & Événements dédiées (voir Navbar.jsx) :
+    // les cartes sans page propre renvoient vers Contact plutôt qu'un onglet inexistant.
     experiences: [
       {
         title: "L'étape d'affaires",
         text: "Wi-Fi haut débit gratuit, climatisation, espaces de réunion pour les séminaires.",
+        link: '/contact',
       },
       {
         title: 'La détente',
         text: "Piscine, salle de sport et court de tennis, au bord de la rivière.",
+        link: '/contact',
       },
       {
         title: 'Restaurant & bar',
         text: "Restaurant Libongo et bar lounge, pour les repas comme pour les soirées.",
+        link: '/restaurant',
       },
     ],
     testimonial:

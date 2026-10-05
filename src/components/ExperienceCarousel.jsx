@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 
 // Carrousel "une carte à la fois" pour la section "L'établissement" de l'accueil, inspiré de
@@ -18,6 +19,7 @@ const CHEVRON_RIGHT = (
 
 export default function ExperienceCarousel() {
   const hotel = useHotel()
+  const base = `/${hotel.slug}`
   const items = hotel.experiences
   const roomImages = hotel.rooms.map((room) => room.coverImage)
   const cycleImage = (n) => roomImages[((n % roomImages.length) + roomImages.length) % roomImages.length]
@@ -27,6 +29,7 @@ export default function ExperienceCarousel() {
   const prevIndex = (active - 1 + count) % count
   const nextIndex = (active + 1) % count
   const current = items[active]
+  const currentLink = current.link ? `${base}${current.link}` : null
 
   const goPrev = () => setActive(prevIndex)
   const goNext = () => setActive(nextIndex)
@@ -39,7 +42,13 @@ export default function ExperienceCarousel() {
         </button>
 
         <div className="exp-main">
-          <img src={cycleImage(active)} alt={current.title} />
+          {currentLink ? (
+            <Link to={currentLink} aria-label={`Découvrir : ${current.title}`}>
+              <img src={cycleImage(active)} alt={current.title} />
+            </Link>
+          ) : (
+            <img src={cycleImage(active)} alt={current.title} />
+          )}
         </div>
 
         <button type="button" className="exp-peek exp-peek-next" onClick={goNext} aria-label="Expérience suivante">
@@ -49,7 +58,25 @@ export default function ExperienceCarousel() {
 
       <div className="exp-caption">
         <h3>{current.title}</h3>
-        <p className="t-body">{current.text}</p>
+        <p className="t-body" style={{ marginBottom: currentLink ? 18 : 0 }}>
+          {current.text}
+        </p>
+        {currentLink && (
+          <Link
+            to={currentLink}
+            className="link-underline"
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: 'var(--espresso)',
+              display: 'inline-block',
+            }}
+          >
+            Découvrir →
+          </Link>
+        )}
       </div>
 
       <div className="exp-nav">
@@ -65,17 +92,21 @@ export default function ExperienceCarousel() {
       </div>
 
       <style>{`
+        /* Proportions fixes (indépendantes de la largeur de la fenêtre) : la carte centrale garde
+           un ratio 16/9 façon oneandonlyresorts.com — plus large que haute — et les aperçus
+           latéraux s'étirent automatiquement à la même hauteur (align-items: stretch). */
         .exp-track {
           display: flex;
           align-items: stretch;
           justify-content: center;
           gap: clamp(10px, 1.6vw, 22px);
-          height: clamp(320px, 40vw, 580px);
         }
-        .exp-main { flex: 0 1 820px; overflow: hidden; }
-        .exp-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .exp-main { flex: 4 1 0; max-width: 900px; aspect-ratio: 16 / 9; overflow: hidden; }
+        .exp-main a { display: block; width: 100%; height: 100%; }
+        .exp-main img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .exp-main a:hover img { transform: scale(1.03); }
         .exp-peek {
-          flex: 0 0 clamp(70px, 13vw, 220px);
+          flex: 1 1 0; max-width: 230px;
           padding: 0; border: 0; cursor: pointer; overflow: hidden;
           opacity: 0.55; transition: opacity 0.25s ease;
         }
@@ -98,7 +129,8 @@ export default function ExperienceCarousel() {
         .exp-progress-thumb { position: absolute; inset: 0; background: var(--espresso); transition: transform 0.35s var(--ease); }
 
         @media (max-width: 760px) {
-          .exp-peek { flex: 0 0 28px; }
+          .exp-peek { flex: 0 0 24px; max-width: 24px; }
+          .exp-main { max-width: none; }
         }
       `}</style>
     </div>
