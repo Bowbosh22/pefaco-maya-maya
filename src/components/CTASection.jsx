@@ -4,9 +4,6 @@ import { useHotel } from '../context/HotelContext'
 export default function CTASection() {
   const hotel = useHotel()
   const base = `/${hotel.slug}`
-  const whatsappLink = hotel.whatsapp
-    ? `https://wa.me/${hotel.whatsapp}?text=${encodeURIComponent(hotel.whatsappMessage)}`
-    : null
 
   return (
     <section
@@ -36,20 +33,9 @@ export default function CTASection() {
         Par téléphone ou via les plateformes de réservation habituelles — l'équipe de l'hôtel répond directement.
       </p>
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-        {hotel.phoneHref ? (
-          <a href={hotel.phoneHref} className="btn-solid btn-gold">
-            Appeler l'hôtel
-          </a>
-        ) : (
-          <Link to={`${base}/contact`} className="btn-solid btn-gold">
-            Demander une réservation
-          </Link>
-        )}
-        {whatsappLink && (
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-outline btn-outline-light">
-            WhatsApp
-          </a>
-        )}
+        <Link to={`${base}/contact`} className="btn-solid btn-gold">
+          Contacter l'hôtel
+        </Link>
         <Link to={`${base}/contact`} className="btn-outline btn-outline-light">
           Voir les coordonnées
         </Link>
