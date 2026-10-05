@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 import Footer from '../components/Footer'
@@ -30,41 +31,74 @@ const headCellStyle = {
 export default function Venues() {
   const hotel = useHotel()
   const venues = hotel.venues || []
+  const heroPhoto = hotel.venuesGallery?.[0] || hotel.heroImage
+  // La grille tarifaire reste masquée tant qu'on n'a pas cliqué sur "Découvrir"
+  // (demande du 05/10/2026), bouton placé juste au-dessus des deux photos.
+  const [showGrid, setShowGrid] = useState(false)
+  const gridRef = useRef(null)
+
+  const handleDiscover = () => {
+    setShowGrid(true)
+    requestAnimationFrame(() => {
+      gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }
 
   return (
     <main>
+      {/* En-tête redessiné le 05/10/2026 (demande explicite, inspirée de
+          oneandonlyresorts.com/events) : un grand titre centré suivi d'une phrase, sur fond clair,
+          puis une grande photo pleine largeur — plutôt que le bandeau sable aligné à gauche
+          utilisé jusqu'ici. */}
       <section
         style={{
-          padding: 'calc(var(--nav-h) + clamp(48px,7vw,96px)) clamp(20px,4vw,56px) clamp(40px,6vw,64px)',
-          background: 'var(--sand)',
+          padding: 'calc(var(--nav-h) + clamp(48px,7vw,88px)) clamp(20px,4vw,56px) clamp(40px,6vw,56px)',
+          textAlign: 'center',
         }}
       >
-        <p className="eyebrow">
-          <span className="t-label">Réunions & événements</span>
-        </p>
         <h1
           style={{
             fontFamily: 'var(--serif)',
             fontWeight: 400,
-            fontSize: 'clamp(32px,5vw,60px)',
+            fontSize: 'clamp(34px,5.6vw,64px)',
             color: 'var(--espresso)',
-            maxWidth: 780,
-            lineHeight: 1.1,
-            marginBottom: 20,
+            maxWidth: 820,
+            lineHeight: 1.15,
+            margin: '0 auto 20px',
           }}
         >
-          Salles & Événements
+          Célébrez à Pefaco Hotel <span style={{ whiteSpace: 'nowrap' }}>{hotel.shortName}</span>
         </h1>
-        <p className="t-body" style={{ maxWidth: 640 }}>
-          Neuf espaces pour vos cérémonies, conférences et réceptions — capacités et tarifs communiqués par Pefaco.
+        <p className="t-body" style={{ maxWidth: 580, margin: '0 auto', fontSize: 16 }}>
+          Neuf espaces modulables à Brazzaville, des réunions d'affaires aux mariages de 1 000 invités, avec une équipe dédiée à chaque détail.
         </p>
       </section>
+
+      {heroPhoto && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+            <img
+              src={heroPhoto}
+              alt={`${hotel.name} — événements`}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        </section>
+      )}
 
       {hotel.venuesIntro && (
         <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
           <p className="t-body" style={{ maxWidth: 760, margin: '0 auto', fontSize: 15, lineHeight: 1.85, whiteSpace: 'pre-line' }}>
             {hotel.venuesIntro}
           </p>
+        </section>
+      )}
+
+      {!showGrid && (
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(32px,4.5vw,40px)', textAlign: 'center' }}>
+          <button type="button" onClick={handleDiscover} className="btn-outline">
+            Découvrir
+          </button>
         </section>
       )}
 
@@ -89,7 +123,8 @@ export default function Venues() {
         </section>
       )}
 
-      <section style={{ padding: 'clamp(48px,7vw,80px) clamp(20px,4vw,56px)' }}>
+      {showGrid && (
+      <section ref={gridRef} style={{ padding: 'clamp(48px,7vw,80px) clamp(20px,4vw,56px)' }}>
         <div className="venues-table" style={{ maxWidth: 1100, margin: '0 auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
@@ -145,6 +180,7 @@ export default function Venues() {
           </Link>
         </div>
       </section>
+      )}
 
       <style>{`
         @media (max-width: 700px) {
