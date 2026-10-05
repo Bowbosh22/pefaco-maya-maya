@@ -96,9 +96,12 @@ export default function Heritage() {
         </p>
       </section>
 
+      {/* Photo pleine largeur (bord à bord, sans marge ni plafond de largeur) — demande du
+          05/10/2026, référence oneandonlyresorts.com/our-story dont la photo d'ouverture occupe
+          tout l'écran plutôt que d'être centrée avec des marges. */}
       {heroPhoto && (
-        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+        <section style={{ padding: '0 0 clamp(40px,6vw,56px)' }}>
+          <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden' }}>
             <img src={heroPhoto} alt={hotel.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
         </section>

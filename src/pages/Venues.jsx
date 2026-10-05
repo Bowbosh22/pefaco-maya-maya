@@ -31,7 +31,7 @@ const headCellStyle = {
 export default function Venues() {
   const hotel = useHotel()
   const venues = hotel.venues || []
-  const heroPhoto = hotel.venuesGallery?.[0] || hotel.heroImage
+  const heroPhoto = hotel.venuesHeroImage || hotel.venuesGallery?.[0] || hotel.heroImage
   // La grille tarifaire reste masquée tant qu'on n'a pas cliqué sur "Découvrir"
   // (demande du 05/10/2026), bouton placé juste au-dessus des deux photos.
   const [showGrid, setShowGrid] = useState(false)
@@ -74,9 +74,13 @@ export default function Venues() {
         </p>
       </section>
 
+      {/* Photo pleine largeur (bord à bord, sans marge ni plafond de largeur) — demande du
+          05/10/2026, référence oneandonlyresorts.com/our-story dont la photo d'ouverture occupe
+          tout l'écran plutôt que d'être centrée avec des marges (appliqué aussi à la page
+          Héritage pour rester cohérent entre les deux). */}
       {heroPhoto && (
-        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+        <section style={{ padding: '0 0 clamp(40px,6vw,56px)' }}>
+          <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden' }}>
             <img
               src={heroPhoto}
               alt={`${hotel.name} — événements`}
