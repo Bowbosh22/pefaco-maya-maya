@@ -74,7 +74,7 @@ export default function ExperienceCarousel() {
               display: 'inline-block',
             }}
           >
-            {current.linkLabel || 'Découvrir'} →
+            Découvrir →
           </Link>
         )}
       </div>
