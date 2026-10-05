@@ -17,7 +17,11 @@ export default function Contact() {
 
   const contactRows = [
     { label: 'Adresse', value: hotel.address },
-    hotel.phone ? { label: 'Téléphone', value: hotel.phone, href: hotel.phoneHref } : { label: 'Téléphone', value: "À confirmer avec l'hôtel" },
+    hotel.phoneLines
+      ? { label: 'Téléphone', lines: hotel.phoneLines }
+      : hotel.phone
+      ? { label: 'Téléphone', value: hotel.phone, href: hotel.phoneHref }
+      : { label: 'Téléphone', value: "À confirmer avec l'hôtel" },
     hotel.bookingEmail ? { label: 'E-mail', value: hotel.bookingEmail, href: `mailto:${hotel.bookingEmail}` } : null,
     hotel.website ? { label: 'Site web', value: hotel.website.replace(/^https?:\/\//, ''), href: hotel.website } : null,
     { label: 'Réception', value: hotel.reception },
@@ -77,7 +81,19 @@ export default function Contact() {
                 <p className="t-label" style={{ marginBottom: 8 }}>
                   {row.label}
                 </p>
-                {row.href ? (
+                {row.lines ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    {row.lines.map((line) => (
+                      <a
+                        key={line.href}
+                        href={line.href}
+                        style={{ fontFamily: 'var(--serif)', fontSize: 20, color: 'var(--espresso)' }}
+                      >
+                        {line.display}
+                      </a>
+                    ))}
+                  </div>
+                ) : row.href ? (
                   <a
                     href={row.href}
                     {...(row.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}

@@ -134,6 +134,11 @@ et pour ceux qui veulent prendre leur temps.`,
     detenteImage: mmDetente,
     phone: '+242 05 604 8030 / +242 05 604 8035',
     phoneHref: 'tel:+242056048030',
+    // Détail des lignes affiché sur la page Contact (chaque ligne garde son propre lien d'appel).
+    phoneLines: [
+      { display: '+242 05 604 8030-31', href: 'tel:+242056048030' },
+      { display: '+242 05 604 8035-03', href: 'tel:+242056048035' },
+    ],
     whatsapp: '242056048030',
     whatsappMessage: 'Bonjour, je souhaite réserver une chambre à l\'hôtel Pefaco Maya-Maya.',
     bookingEmail: 'infos@pefacohotels.com',
