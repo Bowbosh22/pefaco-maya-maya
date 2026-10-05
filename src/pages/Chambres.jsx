@@ -124,7 +124,7 @@ export default function Chambres() {
         .section-intro p.lead {
           font-family: var(--serif); font-weight: 400; font-style: italic;
           font-size: clamp(18px,2vw,22px); color: var(--espresso); line-height: 1.6;
-          max-width: 680px; margin: 14px 0 0;
+          max-width: 1020px; margin: 14px 0 0;
         }
         .section-title { max-width: 1100px; margin: 0 auto; padding: clamp(40px,6vw,56px) clamp(20px,4vw,56px) 8px; }
         .section-title h2 {
