@@ -78,8 +78,8 @@ export default function Venues() {
           la version bord à bord collait trop aux bords de page) et format panoramique court
           (appliqué aussi à la page Héritage pour rester cohérent entre les deux). */}
       {heroPhoto && (
-        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', aspectRatio: '21 / 10', overflow: 'hidden' }}>
+        <section style={{ padding: '0 clamp(16px,2.5vw,40px) clamp(40px,6vw,56px)' }}>
+          <div style={{ maxWidth: 1600, margin: '0 auto', aspectRatio: '21 / 10', overflow: 'hidden' }}>
             <img
               src={heroPhoto}
               alt={`${hotel.name} — événements`}
