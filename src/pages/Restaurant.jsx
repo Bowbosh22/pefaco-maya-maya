@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 import Footer from '../components/Footer'
 
-// Page « Restaurant » redessinée le 01/10/2026 (demande explicite) dans l'esprit éditorial de
-// aman.com/resorts/amanjena/dining : un chapeau de présentation, puis un grand bloc photo + texte
-// par restaurant (alternés gauche/droite), et un établissement — le bar — en clôture plein cadre,
-// plutôt qu'une simple grille de texte à 3 colonnes. Les 4 photos générales du restaurant
-// (maya-maya-restaurant-1 à 4) ont été réparties une par établissement (Bistro Parisien, Bochelli,
-// Moringa, Essengo Bar) à la demande de Mr. Mbemba, à titre indicatif tant que l'hôtel n'a pas
-// transmis de photo propre à chaque salle.
+// Page « Restaurant » — section des établissements redessinée le 05/10/2026 (demande explicite,
+// captures d'écran de oneandonlyresorts.com/dining à l'appui) : un grand bloc photo + texte par
+// restaurant, alterné gauche/droite comme leur section "Garden-to-Plate Dining" (ex. Atria / Le
+// jardin du chef / Botanique) — label du type de cuisine, nom en grand serif, description, puis un
+// bouton bordé "En savoir plus" menant au contact (pas de page dédiée par restaurant sur ce site).
+// Le bar reste en clôture plein cadre, dans l'esprit de leur expérience phare mise en avant en fin
+// de page. Les 4 photos générales du restaurant (maya-maya-restaurant-1 à 4) ont été réparties une
+// par établissement (Bistro Parisien, Bochelli, Moringa, Essengo Bar) à la demande de Mr. Mbemba, à
+// titre indicatif tant que l'hôtel n'a pas transmis de photo propre à chaque salle.
 function PhotoBadge() {
   return (
     <span
@@ -60,28 +62,24 @@ export default function Restaurant() {
         </div>
       </section>
 
-      {/* Un bloc alterné photo + texte par restaurant, façon amanjena.com/dining. */}
+      {/* Un grand bloc photo + texte par restaurant, alterné gauche/droite, façon la section
+          "Garden-to-Plate Dining" de oneandonlyresorts.com/dining. */}
       {restaurants.map((r, i) => {
-        const reversed = i % 2 === 1
+        const textFirst = i % 2 === 0
         return (
           <section key={r.name} style={{ padding: 'clamp(40px,6vw,64px) clamp(20px,4vw,56px)' }}>
             <div
-              className="rest-row"
+              className="dine-row"
               style={{
                 maxWidth: 1200,
                 margin: '0 auto',
                 display: 'grid',
-                gridTemplateColumns: '1.1fr 1fr',
+                gridTemplateColumns: '1fr 1.1fr',
                 gap: 'clamp(32px,5vw,64px)',
                 alignItems: 'center',
-                direction: reversed ? 'rtl' : 'ltr',
               }}
             >
-              <div style={{ direction: 'ltr', position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden' }}>
-                {r.image && <img src={r.image} alt={r.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />}
-                {r.photoIndicative && <PhotoBadge />}
-              </div>
-              <div style={{ direction: 'ltr' }}>
+              <div className="dine-text" style={{ order: textFirst ? 1 : 2 }}>
                 <p className="t-label" style={{ color: 'var(--terracotta)', marginBottom: 14 }}>
                   {r.cuisine}
                 </p>
@@ -89,15 +87,22 @@ export default function Restaurant() {
                   style={{
                     fontFamily: 'var(--serif)',
                     fontWeight: 400,
-                    fontSize: 'clamp(26px,3.2vw,38px)',
+                    fontSize: 'clamp(28px,3.6vw,46px)',
                     color: 'var(--espresso)',
-                    marginBottom: 16,
+                    marginBottom: 18,
+                    lineHeight: 1.15,
                   }}
                 >
                   {r.name}
                 </h2>
-                <div style={{ height: 1, width: 40, background: 'var(--gold)', marginBottom: 16 }} />
-                <p style={{ fontSize: 14.5, color: 'var(--soft)', lineHeight: 1.8, maxWidth: 460, margin: 0 }}>{r.description}</p>
+                <p style={{ fontSize: 15, color: 'var(--soft)', lineHeight: 1.8, maxWidth: 440, margin: '0 0 28px' }}>{r.description}</p>
+                <Link to={`/${hotel.slug}/contact`} className="dine-cta">
+                  En savoir plus
+                </Link>
+              </div>
+              <div className="dine-image" style={{ order: textFirst ? 2 : 1, position: 'relative', aspectRatio: '6 / 5', overflow: 'hidden' }}>
+                {r.image && <img src={r.image} alt={r.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />}
+                {r.photoIndicative && <PhotoBadge />}
               </div>
             </div>
           </section>
@@ -151,8 +156,31 @@ export default function Restaurant() {
       <Footer />
 
       <style>{`
-        @media (max-width: 860px) {
-          .rest-row { grid-template-columns: 1fr !important; direction: ltr !important; }
+        /* Bouton bordé "En savoir plus", sans la casse majuscule/l'espacement serré des CTA
+           habituels du site — pour coller au style des boutons observés sur
+           oneandonlyresorts.com/dining (texte en casse normale, lettrage détendu). */
+        .dine-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 15px 30px;
+          border: 1px solid var(--espresso);
+          font-family: var(--sans);
+          font-size: 13.5px;
+          font-weight: 500;
+          color: var(--espresso);
+          transition: background 0.3s ease, color 0.3s ease;
+        }
+        .dine-cta:hover {
+          background: var(--espresso);
+          color: var(--ivory);
+        }
+        @media (max-width: 760px) {
+          .dine-row { grid-template-columns: 1fr !important; }
+          .dine-row .dine-text,
+          .dine-row .dine-image { order: initial !important; }
+          .dine-row .dine-image { order: 1 !important; margin-bottom: 28px; }
+          .dine-row .dine-text { order: 2 !important; }
         }
       `}</style>
     </main>
