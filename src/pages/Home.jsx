@@ -3,7 +3,7 @@ import ImmersiveArrival from '../components/hero/ImmersiveArrival'
 import SpotlightCarousel from '../components/SpotlightCarousel'
 import RoomsShowcase from '../components/RoomsShowcase'
 import EditorialBlock from '../components/EditorialBlock'
-import ExperienceCard from '../components/ExperienceCard'
+import ExperienceCarousel from '../components/ExperienceCarousel'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
 
@@ -80,11 +80,7 @@ export default function Home() {
           >
             Trois façons d'y séjourner.
           </h2>
-          <div style={{ display: 'grid', gap: 40, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
-            {hotel.experiences.map((exp, i) => (
-              <ExperienceCard key={exp.title} image={cycleImage(i)} title={exp.title} text={exp.text} />
-            ))}
-          </div>
+          <ExperienceCarousel />
         </div>
       </section>
 
