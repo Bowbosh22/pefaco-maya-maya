@@ -109,6 +109,12 @@ import mmDestinationCongo from '../assets/images/maya-maya-destination-congo.jpg
 import mmHeritageArt from '../assets/images/maya-maya-heritage-art.jpg'
 import mmVenuesBanquet from '../assets/images/maya-maya-venues-banquet.jpg'
 import mmVenuesConference from '../assets/images/maya-maya-venues-conference.jpg'
+// Photo de mariage fournie par Mr. Mbemba (05/10/2026), utilisée en grande photo d'ouverture
+// de la page Salles & Événements, sous le titre "Célébrez à Pefaco Hotel Maya-Maya".
+import mmVenuesWeddingDance from '../assets/images/maya-maya-venues-wedding-dance.jpg'
+// Photo de piscine fournie par Mr. Mbemba (05/10/2026), utilisée en grande photo d'ouverture
+// de la page Héritage, sous le titre "L'Héritage Maya-Maya".
+import mmHeritageHeroPool from '../assets/images/maya-maya-heritage-hero-pool.jpg'
 import mmMenuChef from '../assets/images/maya-maya-menu-chef.jpg'
 import mmRestaurant4 from '../assets/images/maya-maya-restaurant-4.jpg'
 // Logo officiel Pefaco Hotel Maya Maya transmis par Mr. Mbemba le 29/09/2026.
@@ -257,6 +263,10 @@ et pour ceux qui veulent prendre leur temps.`,
     // Héritage depuis le 01/10/2026 (remplacée par le bloc Destination +
     // Histoire ci-dessous), conservée ici au cas où.
     heritageGallery: [mmHeritageFacadeJour, mmHeritageEntree, mmHeritageLobby],
+    // Grande photo d'ouverture de la page Héritage, sous le titre (demande du
+    // 05/10/2026) — distincte de `heritageGallery` (toujours utilisée pour les
+    // 3 photos sous la ligne de chiffres et le bloc Destination).
+    heritageHeroImage: mmHeritageHeroPool,
     // Bloc « Destination » + photo d'art en tête de la page Héritage, ajoutés
     // le 01/10/2026 (demande explicite, référence : belmond.com/en/stories).
     // Photos fournies par Mr. Mbemba à titre de démonstration de mise en page
@@ -313,6 +323,9 @@ et pour ceux qui veulent prendre leur temps.`,
     // signalée initialement (les photos de salles de la plaquette étaient
     // fondues sous le tableau de prix, inutilisables telles quelles).
     venuesGallery: [mmVenuesBanquet, mmVenuesConference],
+    // Grande photo sous le titre de la page Salles & Événements (demande du 05/10/2026) —
+    // distincte de venuesGallery, qui reste les 2 photos de salles plus bas sur la page.
+    venuesHeroImage: mmVenuesWeddingDance,
     // Paragraphe d'intro complémentaire — contenu officiel du « Dossier de
     // Presse PEFACO HOTEL MAYA MAYA 5 » transmis par Mr. Mbemba (30/09/2026) :
     // vue d'ensemble des salles de réunion et de l'équipe dédiée aux mariages,

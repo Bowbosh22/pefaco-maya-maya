@@ -61,7 +61,7 @@ export default function Heritage() {
   const hotel = useHotel()
   const gallery = hotel.heritageGallery || []
   const heritageTitle = hotel.heritageTitle || `L'Héritage ${hotel.shortName}`
-  const heroPhoto = gallery[0] || hotel.heritageImage
+  const heroPhoto = hotel.heritageHeroImage || gallery[0] || hotel.heritageImage
 
   return (
     <main>
