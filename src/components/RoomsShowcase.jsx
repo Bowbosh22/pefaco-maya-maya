@@ -22,7 +22,7 @@ export default function RoomsShowcase() {
       }}
     >
       <img
-        src={hotel.heroImage}
+        src={hotel.roomsBannerImage || hotel.heroImage}
         alt=""
         aria-hidden="true"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
@@ -55,7 +55,7 @@ export default function RoomsShowcase() {
           {hotel.rooms.length} catégories, du séjour d'une nuit à l'étape prolongée. Toutes climatisées, à {hotel.city}.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Link to={`${base}/chambres`} className="btn-outline-light">
+          <Link to={`${base}/chambres`} className="btn-solid btn-gold">
             Découvrir nos chambres
           </Link>
         </div>

@@ -6,6 +6,10 @@
 
 import oyoHero from '../assets/images/oyo-hero.jpg'
 import mayaMayaHero from '../assets/images/maya-maya-hero.jpg'
+// Photo fournie par Mr. Mbemba (05/10/2026) pour la bannière "Chambres & suites" de l'accueil
+// uniquement — ne remplace pas heroImage (hero plein écran + fond du carrousel "Trois façons
+// d'y séjourner", qui restent sur la photo de la terrasse).
+import mayaMayaChambresBanner from '../assets/images/maya-maya-chambres-banner.jpg'
 import oyoClassique1 from '../assets/images/oyo-chambre-classique-1.jpg'
 import oyoClassique2 from '../assets/images/oyo-chambre-classique-2.jpg'
 import oyoKitchenette1 from '../assets/images/oyo-chambre-kitchenette-1.jpg'
@@ -129,6 +133,8 @@ et pour ceux qui veulent prendre leur temps.`,
     logoIcon: mmLogoIcon,
     logoFull: mmLogoFull,
     heroImage: mayaMayaHero,
+    // Bannière "Chambres & suites" de l'accueil (section RoomsShowcase) uniquement.
+    roomsBannerImage: mayaMayaChambresBanner,
     restaurantImage: mmRestaurant1,
     restaurantGallery: [mmRestaurant1, mmRestaurant2, mmRestaurant3, mmRestaurant4],
     detenteImage: mmDetente,
@@ -217,16 +223,19 @@ et pour ceux qui veulent prendre leur temps.`,
         title: 'Histoire',
         text: "Architecture moderne, décorations culturelles et un riche passé — l'âme du Maya-Maya à découvrir.",
         link: '/heritage',
+        linkLabel: "Explorez l'héritage",
       },
       {
         title: 'La détente',
         text: "Piscine extérieure et bar, pour souffler avant ou après le vol.",
         link: '/activites',
+        linkLabel: 'Explorez les activités',
       },
       {
         title: 'Réunions & groupes',
         text: "Espaces de réception et navette aéroport, pour les séjours en équipe.",
         link: '/salles-evenements',
+        linkLabel: 'Explorez les salles',
       },
     ],
     testimonial:

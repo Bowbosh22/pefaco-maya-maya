@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useHotel } from '../../context/HotelContext'
 import RoomSearchBar from '../RoomSearchBar'
 
@@ -20,10 +19,6 @@ import RoomSearchBar from '../RoomSearchBar'
 // une fois qu'on scrolle sous le hero, comme sur la page Chambres.
 export default function ImmersiveArrival() {
   const hotel = useHotel()
-
-  const whatsappLink = hotel.whatsapp
-    ? `https://wa.me/${hotel.whatsapp}?text=${encodeURIComponent(hotel.whatsappMessage)}`
-    : null
 
   return (
     <section style={{ position: 'relative' }}>
@@ -71,7 +66,7 @@ export default function ImmersiveArrival() {
           textAlign: 'center',
           maxWidth: 640,
           margin: '0 auto',
-          padding: 'clamp(56px,8vw,88px) clamp(20px,4vw,32px) clamp(64px,8vw,96px)',
+          padding: 'clamp(56px,8vw,88px) clamp(20px,4vw,32px)',
         }}
       >
         <h1
@@ -98,17 +93,6 @@ export default function ImmersiveArrival() {
         >
           {hotel.heroTagline}
         </p>
-
-        <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
-          <Link to={`/${hotel.slug}/chambres`} className="btn-solid">
-            Découvrir les chambres
-          </Link>
-          {whatsappLink && (
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-outline">
-              WhatsApp
-            </a>
-          )}
-        </div>
       </div>
 
       <style>{`
