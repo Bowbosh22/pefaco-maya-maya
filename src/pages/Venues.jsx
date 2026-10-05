@@ -74,13 +74,12 @@ export default function Venues() {
         </p>
       </section>
 
-      {/* Photo pleine largeur (bord à bord, sans marge ni plafond de largeur) — demande du
-          05/10/2026, référence oneandonlyresorts.com/our-story dont la photo d'ouverture occupe
-          tout l'écran plutôt que d'être centrée avec des marges (appliqué aussi à la page
-          Héritage pour rester cohérent entre les deux). */}
+      {/* Photo sous le titre, avec marge de chaque côté (demande du 05/10/2026, après retour :
+          la version bord à bord collait trop aux bords de page) et format panoramique court
+          (appliqué aussi à la page Héritage pour rester cohérent entre les deux). */}
       {heroPhoto && (
-        <section style={{ padding: '0 0 clamp(40px,6vw,56px)' }}>
-          <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+        <section style={{ padding: '0 clamp(20px,4vw,56px) clamp(40px,6vw,56px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', aspectRatio: '21 / 10', overflow: 'hidden' }}>
             <img
               src={heroPhoto}
               alt={`${hotel.name} — événements`}
