@@ -42,7 +42,10 @@ export default function Contact() {
         { label: 'Annulation', value: hotel.practicalInfo.cancellation },
         { label: 'Parking', value: hotel.practicalInfo.parking },
         { label: 'Animaux', value: hotel.practicalInfo.pets },
-      ]
+        hotel.practicalInfo.breakfast ? { label: 'Petit-déjeuner', value: hotel.practicalInfo.breakfast } : null,
+        hotel.practicalInfo.shuttle ? { label: 'Navette', value: hotel.practicalInfo.shuttle } : null,
+        hotel.practicalInfo.wifi ? { label: 'Wifi', value: hotel.practicalInfo.wifi } : null,
+      ].filter(Boolean)
     : []
 
   return (
@@ -223,7 +226,9 @@ export default function Contact() {
               Avant votre séjour
             </h2>
             <p className="t-body" style={{ maxWidth: 640, marginBottom: 40, color: 'var(--soft)' }}>
-              Informations usuelles pour un établissement 5 étoiles — à confirmer avec Pefaco avant toute publication officielle.
+              {hotel.practicalInfo.confirmed
+                ? 'Informations confirmées directement auprès de l\'hôtel.'
+                : 'Informations usuelles pour un établissement 5 étoiles — à confirmer avec Pefaco avant toute publication officielle.'}
             </p>
             <div style={{ display: 'grid', gap: 32, gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
               {practicalRows.map((row) => (
