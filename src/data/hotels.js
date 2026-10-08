@@ -512,6 +512,111 @@ et pour ceux qui veulent prendre leur temps.`,
         },
       ],
     },
+    // Page « Actualités » (demande du 08/10/2026, suite à la réunion avec la direction).
+    // Contenus pré-remplis UNIQUEMENT à partir d'informations déjà officielles (dossier de
+    // presse et plaquette Pefaco) : aucune date inventée — `dateLabel` décrit un rythme
+    // (« Tous les dimanches ») ou une période, jamais un jour précis non communiqué.
+    // Pour publier une actualité : ajouter un objet dans `items` (le plus récent en premier),
+    // avec un `slug` unique, une `category` parmi `categories`, un résumé et un `body`
+    // (tableau de paragraphes). Le premier item `featured: true` ouvre la page.
+    news: {
+      categories: ['Culture', 'Événements', 'Soirées', 'Bien-être'],
+      agenda: [
+        { day: 'Dimanches', label: 'Pool Jazz Brunch', time: '12h – 16h' },
+        { day: 'Jeudis', label: 'Happy Hour', time: '18h – 20h' },
+        { day: 'Vendredis', label: 'Concert live WAKASSA', time: '19h30 – 22h30' },
+        { day: 'Samedis', label: 'Happy Hour', time: '18h – 22h' },
+      ],
+      items: [
+        {
+          slug: 'art-hotel-vernissages',
+          category: 'Culture',
+          featured: true,
+          dateLabel: "Toute l'année",
+          title: "L'Art Hôtel : 6 à 8 vernissages par an",
+          summary:
+            "Cocktails et vernissages exposent les toiles d'artistes locaux et internationaux, environ un mois à chaque fois.",
+          body: [
+            "Surnommé « l'Art Hôtel » par ses habitués, le Pefaco Hotel Maya-Maya organise en moyenne 6 à 8 cocktails et vernissages par an, exposant les toiles d'artistes locaux et internationaux pendant environ un mois à chaque fois.",
+            "Ces rendez-vous réunissent le corps diplomatique et les autorités culturelles du pays. Le lobby accueille régulièrement artistes et collectionneurs, le temps d'un vernissage ou d'une exposition éphémère.",
+          ],
+          image: mmActivitesExpositions,
+        },
+        {
+          slug: 'pool-jazz-brunch',
+          category: 'Événements',
+          dateLabel: 'Tous les dimanches · 12h – 16h',
+          title: 'Pool Jazz Brunch',
+          summary: "Orchestre live et buffet à volonté au bord de l'Espace MBONGUI.",
+          body: [
+            "Tous les dimanches, le Pool Jazz Brunch réunit un orchestre live et un buffet à volonté de 12h à 16h.",
+            "L'Espace MBONGUI offre un grand bassin et un bassin enfant, des bains de soleil, des beds chillout et des lits à baldaquin.",
+          ],
+          image: mmActivitesPiscine,
+        },
+        {
+          slug: 'wakassa-essengo-bar',
+          category: 'Soirées',
+          dateLabel: 'Tous les vendredis · 19h30 – 22h30',
+          title: "Concert live WAKASSA à l'Essengo Bar",
+          summary: 'Un concert live gratuit chaque vendredi soir, dans le bar à cocktails de l’hôtel.',
+          body: [
+            "Tous les vendredis soir, le groupe WAKASSA joue en concert live gratuit de 19h30 à 22h30 à l'Essengo Bar.",
+            "Les vendredis et samedis, un DJ anime la soirée de 18h à 23h, avec un Happy Hour de 18h à 20h.",
+          ],
+          image: mmRestaurant4,
+          photoIndicative: true,
+        },
+        {
+          slug: 'happy-hours',
+          category: 'Soirées',
+          dateLabel: 'Jeudis, vendredis et samedis',
+          title: 'Happy Hours de la semaine',
+          summary: '2 cocktails achetés, 1 offert, et une tombola à chaque rendez-vous.',
+          body: [
+            "Les jeudis de 18h à 20h et les samedis de 18h à 22h, l'hôtel propose ses Happy Hours avec DJ ; les vendredis sont animés en musique live.",
+            "À chaque rendez-vous : 2 cocktails achetés, 1 cocktail offert ; 1 Beaufort acheté, 1 Beaufort offert ; et une tombola avec plusieurs lots à gagner.",
+          ],
+          image: mmActivitesSoirees,
+        },
+        {
+          slug: 'riac-ateliers-sahm',
+          category: 'Culture',
+          dateLabel: 'Partenariat depuis 6 ans',
+          title: "Partenaire de la RIAC depuis 6 ans",
+          summary: "L'hôtel soutient la Rencontre Internationale d'Art Contemporain en offrant 10 chambres pendant 3 semaines.",
+          body: [
+            "Le Pefaco Hotel Maya-Maya est partenaire depuis 6 ans de la RIAC (Rencontre Internationale d'Art Contemporain), organisée par le collectif d'artistes « Les Ateliers SAHM ».",
+            "À cette occasion, l'hôtel offre 10 chambres pendant 3 semaines. Il a également accueilli le tournage de la télé-réalité « Qui veut devenir Star de Cinéma » (diffusée sur DRTV et TOP TV), en mettant une salle de séminaire à disposition des candidats.",
+          ],
+          image: mmHeritageLobby,
+        },
+        {
+          slug: 'moringa-miss-congo-2016',
+          category: 'Événements',
+          dateLabel: 'Le Moringa, jusqu’à 350 invités',
+          title: "Le Moringa, scène de l'Élection Miss Congo 2016",
+          summary: 'Défilés, vernissages, lancements de produits et congrès : un espace modulable qui a tout accueilli.',
+          body: [
+            "Décor africain-chic où se prennent les petits-déjeuners, Le Moringa est un espace modulable qui a déjà accueilli défilés, vernissages, lancements de produits, l'Élection Miss Congo 2016 et des congrès présidentiels et ministériels.",
+            "Il peut recevoir jusqu'à 250 personnes assises et 350 en cocktail.",
+          ],
+          image: mmRestaurant3,
+          photoIndicative: true,
+        },
+        {
+          slug: 'coach-salle-de-gym',
+          category: 'Bien-être',
+          dateLabel: 'Tous les jours · 18h30 – 20h30',
+          title: 'Un coach sportif à la salle de gym',
+          summary: '15 appareils de cardio et de musculation, et un coach présent chaque jour.',
+          body: [
+            "La salle de gym compte 15 appareils de cardio et de musculation, avec un coach sportif présent tous les jours de 18h30 à 20h30, et le dimanche de 12h30 à 14h30.",
+          ],
+          image: mmActivitesGym,
+        },
+      ],
+    },
     rooms: [
       {
         id: 1,

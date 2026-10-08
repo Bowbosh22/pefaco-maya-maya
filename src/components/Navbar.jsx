@@ -30,6 +30,7 @@ export default function Navbar() {
     ...(hotel.venues ? [{ to: `${base}/salles-evenements`, label: 'Salles & Événements' }] : []),
     ...(hotel.eventMenu ? [{ to: `${base}/menu-evenementiel`, label: 'Menu événementiel' }] : []),
     ...(hotel.activities ? [{ to: `${base}/activites`, label: 'Activités' }] : []),
+    ...(hotel.news ? [{ to: `${base}/actualites`, label: 'Actualités' }] : []),
     { to: `${base}/contact`, label: 'Contact' },
   ]
   const reservationLink = `${base}/reservation`
