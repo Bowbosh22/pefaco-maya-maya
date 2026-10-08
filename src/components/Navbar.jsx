@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   // `menuMounted` garde le panneau dans le DOM le temps de l'animation de fermeture
   // (sinon il disparaissait d'un coup, ce qui donnait une impression de saccade).
@@ -11,13 +10,6 @@ export default function Navbar() {
   const closeTimer = useRef(null)
   const { pathname } = useLocation()
   const hotel = useHotel()
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   const openMenu = useCallback(() => {
     clearTimeout(closeTimer.current)
@@ -63,7 +55,9 @@ export default function Navbar() {
     { to: `${base}/contact`, label: 'Contact' },
   ]
   const reservationLink = `${base}/reservation`
-  const solid = scrolled || menuOpen
+  // Demande du 08/10/2026 : la navbar garde le même aspect (fond ivoire plein) dès le haut de page,
+  // sans transition au défilement.
+  const solid = true
   // Sur le hero, la navbar est transparente et se superpose à une photo dont la
   // luminosité varie selon l'hôtel/la page — un texte espresso y devenait peu
   // lisible (ex. hall clair d'Oyo). Un voile dégradé + un texte clair réglent
@@ -84,11 +78,8 @@ export default function Navbar() {
         display: 'flex',
         alignItems: 'center',
         padding: '0 clamp(20px, 4vw, 56px)',
-        background: solid
-          ? 'var(--ivory)'
-          : 'linear-gradient(180deg, rgba(29,38,32,0.55) 0%, rgba(29,38,32,0.15) 70%, rgba(29,38,32,0) 100%)',
-        borderBottom: solid ? '1px solid var(--line)' : '1px solid transparent',
-        transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease)',
+        background: 'var(--ivory)',
+        borderBottom: '1px solid var(--line)',
       }}
     >
       {/* Bouton menu (demande du 05/10/2026, inspirée de oneandonlyresorts.com) : sur toutes les
@@ -102,8 +93,8 @@ export default function Navbar() {
         className="nav-burger"
         style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: 8, marginRight: 'clamp(14px,2.4vw,28px)', flexShrink: 0 }}
       >
-        <span style={{ width: 22, height: 1.4, background: navText, transition: 'background 0.3s ease' }} />
-        <span style={{ width: 22, height: 1.4, background: navText, transition: 'background 0.3s ease' }} />
+        <span style={{ width: 22, height: 1.4, background: navText, }} />
+        <span style={{ width: 22, height: 1.4, background: navText, }} />
       </button>
 
       <Link to={base} style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
@@ -132,6 +123,7 @@ export default function Navbar() {
             gras et majuscule, comme "PEFACO HOTEL MAYA MAYA" sur l'emblème, au lieu du
             serif italique utilisé jusqu'ici. */}
         <span
+          className="nav-brand-text"
           style={{
             fontFamily: 'var(--sans)',
             fontWeight: 700,
@@ -149,6 +141,7 @@ export default function Navbar() {
 
       <Link
         to="/"
+        className="nav-switch"
         style={{
           marginLeft: 'auto',
           fontSize: 11,
@@ -246,6 +239,12 @@ export default function Navbar() {
 
         @media (max-width: 560px) {
           .nav-menu-panel { width: 100vw; }
+        }
+        /* Petits écrans : la navbar pleine doit tout contenir (logo + nom + « Changer d'hôtel »). */
+        @media (max-width: 480px) {
+          .nav-brand-text { font-size: 12px !important; letter-spacing: 0.04em !important; }
+          .nav-switch { font-size: 9.5px !important; letter-spacing: 0.06em !important; }
+          .nav-burger { margin-right: 8px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           .nav-menu-panel, .nav-menu-panel.is-closing, .nav-menu-backdrop, .nav-menu-backdrop.is-closing { animation-duration: 0.01s; }

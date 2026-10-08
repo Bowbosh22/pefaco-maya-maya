@@ -20,6 +20,8 @@ import HeroMedia from './HeroMedia'
 // une fois qu'on scrolle sous le hero, comme sur la page Chambres.
 export default function ImmersiveArrival() {
   const hotel = useHotel()
+  // Un seul <h1> par page : si le hero porte le texte d'accueil, le nom d'hôtel en dessous passe en <h2>.
+  const NameTag = hotel.heroIntro ? 'h2' : 'h1'
 
   return (
     <section style={{ position: 'relative' }}>
@@ -27,7 +29,10 @@ export default function ImmersiveArrival() {
         className="hexp-image"
         style={{
           position: 'relative',
-          height: '100svh',
+          // La navbar est désormais pleine (ivoire) dès le haut de page : le hero commence
+          // juste en dessous au lieu de passer derrière elle.
+          marginTop: 'var(--nav-h)',
+          height: 'calc(100svh - var(--nav-h))',
           overflow: 'hidden',
           background: 'var(--espresso)',
         }}
@@ -38,9 +43,61 @@ export default function ImmersiveArrival() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(29,38,32,.35) 0%, rgba(29,38,32,0) 24%, rgba(29,38,32,.15) 70%, rgba(29,38,32,.4) 100%)',
+            zIndex: 5,
+            pointerEvents: 'none',
+            background: hotel.heroIntro
+              ? 'linear-gradient(180deg, rgba(20,24,20,.42) 0%, rgba(20,24,20,.40) 45%, rgba(20,24,20,.58) 100%)'
+              : 'linear-gradient(180deg, rgba(29,38,32,.35) 0%, rgba(29,38,32,0) 24%, rgba(29,38,32,.15) 70%, rgba(29,38,32,.4) 100%)',
           }}
         />
+
+        {/* Texte d'accueil centré sur la photo / vidéo (hotel.heroIntro) */}
+        {hotel.heroIntro && (
+          <div
+            className="hexp-intro"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 10,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              padding: '0 clamp(20px,5vw,64px) clamp(96px,12vh,140px)',
+              color: 'var(--ivory)',
+              textShadow: '0 2px 24px rgba(0,0,0,.35)',
+            }}
+          >
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: 'clamp(11px,1.2vw,13px)',
+                fontWeight: 600,
+                letterSpacing: '0.24em',
+                textTransform: 'uppercase',
+                margin: '0 0 clamp(14px,2vw,22px)',
+              }}
+            >
+              {hotel.heroIntro.eyebrow}
+            </p>
+            <h1
+              style={{
+                fontFamily: 'var(--serif)',
+                fontWeight: 400,
+                fontSize: 'clamp(2rem,5.4vw,4.6rem)',
+                lineHeight: 1.08,
+                maxWidth: 940,
+                margin: '0 0 clamp(14px,2vw,24px)',
+              }}
+            >
+              {hotel.heroIntro.title}
+            </h1>
+            <p style={{ fontSize: 'clamp(13.5px,1.35vw,17px)', lineHeight: 1.6, maxWidth: 760, margin: 0, color: 'rgba(248,243,234,.92)' }}>
+              {hotel.heroIntro.text}
+            </p>
+          </div>
+        )}
 
         <div
           className="hexp-search"
@@ -67,7 +124,7 @@ export default function ImmersiveArrival() {
           padding: 'clamp(56px,8vw,88px) clamp(20px,4vw,32px)',
         }}
       >
-        <h1
+        <NameTag
           style={{
             fontFamily: 'var(--serif)',
             fontWeight: 400,
@@ -77,7 +134,7 @@ export default function ImmersiveArrival() {
           }}
         >
           {hotel.name}
-        </h1>
+        </NameTag>
         <p
           style={{
             fontFamily: 'var(--sans)',
@@ -95,7 +152,7 @@ export default function ImmersiveArrival() {
 
       <style>{`
         @media (max-width: 640px) {
-          .hexp-image { height: 62vh !important; min-height: 420px; }
+          .hexp-image { height: 66vh !important; min-height: 460px; }
           .hexp-search { padding: 0 12px !important; }
         }
       `}</style>

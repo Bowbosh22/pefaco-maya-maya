@@ -12,6 +12,7 @@ const FADE_MS = 1000
 
 export default function HeroMedia({ image, videos, alt }) {
   const [index, setIndex] = useState(0)
+  const [prev, setPrev] = useState(null) // clip qui vient de se terminer : reste affiché sous le nouveau pendant le fondu
   const [started, setStarted] = useState(false)
   const refs = useRef([])
 
@@ -41,9 +42,18 @@ export default function HeroMedia({ image, videos, alt }) {
       if (p && p.catch) p.catch(() => {})
     }
     const t = setTimeout(() => {
+      // Fondu terminé : l'ancien clip peut disparaître ; on le remet au début, prêt pour le prochain tour.
       refs.current.forEach((v, i) => {
-        if (v && i !== index) v.pause()
+        if (v && i !== index) {
+          v.pause()
+          try {
+            v.currentTime = 0
+          } catch {
+            /* ignoré */
+          }
+        }
       })
+      setPrev(null)
     }, FADE_MS + 100)
     return () => clearTimeout(t)
   }, [index, enabled])
@@ -71,7 +81,10 @@ export default function HeroMedia({ image, videos, alt }) {
             preload={i === index || i === (index + 1) % videos.length ? 'auto' : 'metadata'}
             aria-hidden="true"
             onPlaying={() => i === 0 && setStarted(true)}
-            onEnded={() => setIndex((cur) => (cur + 1) % videos.length)}
+            onEnded={() => {
+              setPrev(i)
+              setIndex((cur) => (cur + 1) % videos.length)
+            }}
             style={{
               position: 'absolute',
               inset: 0,
@@ -79,8 +92,12 @@ export default function HeroMedia({ image, videos, alt }) {
               height: '100%',
               objectFit: 'cover',
               objectPosition: 'center',
-              opacity: started && i === index ? 1 : 0,
-              transition: `opacity ${FADE_MS}ms ease`,
+              // Fondu d'entrée uniquement pour le nouveau clip, posé PAR-DESSUS l'ancien qui reste
+              // à pleine opacité en dessous : à aucun moment la photo de fond n'est visible
+              // (avec deux fondus croisés, les deux clips étaient semi-transparents en même temps).
+              opacity: started && (i === index || i === prev) ? 1 : 0,
+              zIndex: i === index ? 2 : i === prev ? 1 : 0,
+              transition: i === index ? `opacity ${FADE_MS}ms ease` : 'none',
               pointerEvents: 'none',
             }}
           />
