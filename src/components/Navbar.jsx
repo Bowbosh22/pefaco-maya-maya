@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useHotel } from '../context/HotelContext'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  // `menuMounted` garde le panneau dans le DOM le temps de l'animation de fermeture
+  // (sinon il disparaissait d'un coup, ce qui donnait une impression de saccade).
+  const [menuMounted, setMenuMounted] = useState(false)
+  const closeTimer = useRef(null)
   const { pathname } = useLocation()
   const hotel = useHotel()
 
@@ -15,9 +19,34 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
+  const openMenu = useCallback(() => {
+    clearTimeout(closeTimer.current)
+    setMenuMounted(true)
+    setMenuOpen(true)
+  }, [])
+
+  const closeMenu = useCallback(() => {
     setMenuOpen(false)
-  }, [pathname])
+    clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setMenuMounted(false), 320)
+  }, [])
+
+  useEffect(() => {
+    closeMenu()
+  }, [pathname, closeMenu])
+
+  useEffect(() => () => clearTimeout(closeTimer.current), [])
+
+  // Fige le défilement de la page derrière le menu : évite que la page « bouge »
+  // (et se repeigne) pendant l'animation.
+  useEffect(() => {
+    if (!menuMounted) return undefined
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [menuMounted])
 
   const base = `/${hotel.slug}`
   const links = [
@@ -69,7 +98,7 @@ export default function Navbar() {
           un (animation en cascade) à l'ouverture. */}
       <button
         aria-label="Menu"
-        onClick={() => setMenuOpen((open) => !open)}
+        onClick={() => (menuOpen ? closeMenu() : openMenu())}
         className="nav-burger"
         style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: 8, marginRight: 'clamp(14px,2.4vw,28px)', flexShrink: 0 }}
       >
@@ -135,15 +164,15 @@ export default function Navbar() {
         Changer d'hôtel
       </Link>
 
-      {menuOpen && (
+      {menuMounted && (
         <>
           <div
-            className="nav-menu-backdrop"
-            onClick={() => setMenuOpen(false)}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(29,38,32,0.45)', backdropFilter: 'blur(2px)', zIndex: 98 }}
+            className={`nav-menu-backdrop${menuOpen ? '' : ' is-closing'}`}
+            onClick={closeMenu}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(29,38,32,0.5)', zIndex: 98 }}
           />
           <div
-            className="nav-menu-panel"
+            className={`nav-menu-panel${menuOpen ? '' : ' is-closing'}`}
             style={{
               position: 'fixed',
               top: 0,
@@ -160,7 +189,7 @@ export default function Navbar() {
           >
             <button
               aria-label="Fermer le menu"
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
               style={{ alignSelf: 'flex-start', fontSize: 22, color: 'var(--espresso)', padding: 8, marginLeft: -8, marginBottom: 'clamp(24px,5vh,48px)' }}
             >
               ✕
@@ -175,7 +204,7 @@ export default function Navbar() {
                     fontFamily: 'var(--serif)',
                     fontSize: 'clamp(22px,3vw,28px)',
                     color: 'var(--espresso)',
-                    animationDelay: `${90 + i * 70}ms`,
+                    animationDelay: `${60 + Math.min(i, 7) * 40}ms`,
                   }}
                 >
                   {link.label}
@@ -186,7 +215,7 @@ export default function Navbar() {
             <Link
               to={reservationLink}
               className="btn-solid nav-menu-item"
-              style={{ justifyContent: 'center', animationDelay: `${90 + links.length * 70}ms` }}
+              style={{ justifyContent: 'center', animationDelay: `${60 + Math.min(links.length, 8) * 40}ms` }}
             >
               Réserver
             </Link>
@@ -196,19 +225,31 @@ export default function Navbar() {
 
       <style>{`
         @keyframes navMenuItemIn {
-          from { opacity: 0; transform: translateY(14px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translate3d(0, 10px, 0); }
+          to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-        .nav-menu-item { opacity: 0; animation: navMenuItemIn 0.55s var(--ease) forwards; }
+        .nav-menu-item { opacity: 0; animation: navMenuItemIn 0.4s cubic-bezier(0.22, 0.8, 0.2, 1) forwards; }
 
-        @keyframes navMenuPanelIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
-        .nav-menu-panel { width: min(440px, 86vw); animation: navMenuPanelIn 0.4s var(--ease) forwards; }
+        @keyframes navMenuPanelIn { from { transform: translate3d(-100%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+        @keyframes navMenuPanelOut { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-100%, 0, 0); } }
+        .nav-menu-panel {
+          width: min(440px, 86vw);
+          will-change: transform;
+          animation: navMenuPanelIn 0.36s cubic-bezier(0.22, 0.8, 0.2, 1) forwards;
+        }
+        .nav-menu-panel.is-closing { animation: navMenuPanelOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards; }
 
         @keyframes navMenuBackdropIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes navMenuBackdropOut { from { opacity: 1; } to { opacity: 0; } }
         .nav-menu-backdrop { animation: navMenuBackdropIn 0.3s ease forwards; }
+        .nav-menu-backdrop.is-closing { animation: navMenuBackdropOut 0.3s ease forwards; }
 
         @media (max-width: 560px) {
           .nav-menu-panel { width: 100vw; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .nav-menu-panel, .nav-menu-panel.is-closing, .nav-menu-backdrop, .nav-menu-backdrop.is-closing { animation-duration: 0.01s; }
+          .nav-menu-item { animation-duration: 0.01s; animation-delay: 0s !important; }
         }
       `}</style>
     </header>
