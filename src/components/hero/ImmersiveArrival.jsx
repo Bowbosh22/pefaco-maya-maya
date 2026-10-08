@@ -46,7 +46,7 @@ export default function ImmersiveArrival() {
             zIndex: 5,
             pointerEvents: 'none',
             background: hotel.heroIntro
-              ? 'linear-gradient(180deg, rgba(20,24,20,.42) 0%, rgba(20,24,20,.40) 45%, rgba(20,24,20,.58) 100%)'
+              ? 'linear-gradient(180deg, rgba(18,22,18,.50) 0%, rgba(18,22,18,.48) 45%, rgba(18,22,18,.64) 100%)'
               : 'linear-gradient(180deg, rgba(29,38,32,.35) 0%, rgba(29,38,32,0) 24%, rgba(29,38,32,.15) 70%, rgba(29,38,32,.4) 100%)',
           }}
         />
@@ -66,7 +66,7 @@ export default function ImmersiveArrival() {
               textAlign: 'center',
               padding: '0 clamp(20px,5vw,64px) clamp(96px,12vh,140px)',
               color: 'var(--ivory)',
-              textShadow: '0 2px 24px rgba(0,0,0,.35)',
+              textShadow: '0 1px 3px rgba(0,0,0,.45), 0 2px 28px rgba(0,0,0,.55)',
             }}
           >
             <p
@@ -93,7 +93,7 @@ export default function ImmersiveArrival() {
             >
               {hotel.heroIntro.title}
             </h1>
-            <p style={{ fontSize: 'clamp(13.5px,1.35vw,17px)', lineHeight: 1.6, maxWidth: 760, margin: 0, color: 'rgba(248,243,234,.92)' }}>
+            <p style={{ fontSize: 'clamp(13.5px,1.35vw,17px)', lineHeight: 1.6, maxWidth: 760, margin: 0, color: '#fff' }}>
               {hotel.heroIntro.text}
             </p>
           </div>

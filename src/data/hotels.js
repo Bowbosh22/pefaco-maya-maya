@@ -145,6 +145,13 @@ et pour ceux qui veulent prendre leur temps.`,
     // Boucle vidéo du hero (08/10/2026, 3 clips Pexels fournis par Mr. Mbemba, compressés en
     // 1080p sans son). La photo ci-dessus reste le repli / l'image de chargement.
     heroVideos: [mmHeroVideo1, mmHeroVideo2, mmHeroVideo3],
+    // Texte d'accueil superposé au hero (08/10/2026), dans l'esprit de oneandonlyresorts.com.
+    // Rédigé avec Mr. Mbemba ; « Mbote » = bonjour en lingala (à faire relire par Pefaco).
+    heroIntro: {
+      eyebrow: 'Mbote, bienvenue à Pefaco',
+      title: 'Le cœur de Brazzaville vous ouvre ses portes',
+      text: 'Entre les rires du brunch jazz, la chaleur du service et le calme de votre chambre, chaque séjour a le goût du retour.',
+    },
     // Bannière "Chambres & suites" de l'accueil (section RoomsShowcase) uniquement.
     roomsBannerImage: mayaMayaChambresBanner,
     restaurantImage: mmRestaurant1,
