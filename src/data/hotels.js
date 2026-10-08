@@ -29,6 +29,9 @@ import mmMasterSuiteV2VueEnsemble from '../assets/images/maya-maya-master-suite-
 import mmRestaurant1 from '../assets/images/maya-maya-restaurant-1.jpg'
 import mmDetente from '../assets/images/maya-maya-detente.jpg'
 import mmRestaurant2 from '../assets/images/maya-maya-restaurant-2.jpg'
+import mmHeroVideo1 from '../assets/videos/hero-1.mp4'
+import mmHeroVideo2 from '../assets/videos/hero-2.mp4'
+import mmHeroVideo3 from '../assets/videos/hero-3.mp4'
 import mmRestaurant3 from '../assets/images/maya-maya-restaurant-3.jpg'
 import oyoRestaurant from '../assets/images/oyo-restaurant.jpg'
 // Les 3 lignes suivantes remplacent, le 29/09/2026, les 3 photos "à titre
@@ -139,6 +142,9 @@ et pour ceux qui veulent prendre leur temps.`,
     logoIcon: mmLogoIcon,
     logoFull: mmLogoFull,
     heroImage: mayaMayaHero,
+    // Boucle vidéo du hero (08/10/2026, 3 clips Pexels fournis par Mr. Mbemba, compressés en
+    // 1080p sans son). La photo ci-dessus reste le repli / l'image de chargement.
+    heroVideos: [mmHeroVideo1, mmHeroVideo2, mmHeroVideo3],
     // Bannière "Chambres & suites" de l'accueil (section RoomsShowcase) uniquement.
     roomsBannerImage: mayaMayaChambresBanner,
     restaurantImage: mmRestaurant1,

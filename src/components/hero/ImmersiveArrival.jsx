@@ -1,5 +1,6 @@
 import { useHotel } from '../../context/HotelContext'
 import RoomSearchBar from '../RoomSearchBar'
+import HeroMedia from './HeroMedia'
 
 // Hero repensé le 29/09/2026 dans l'esprit de larkhotels.com/california/carmel-by-the-sea/tradewinds :
 // une photo épurée (plus de rail d'expériences ni de bandeau prix superposés), la carte
@@ -31,11 +32,8 @@ export default function ImmersiveArrival() {
           background: 'var(--espresso)',
         }}
       >
-        <img
-          src={hotel.heroImage}
-          alt={hotel.name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-        />
+        {/* Photo + (optionnel) boucle de vidéos : hotel.heroVideos dans hotels.js */}
+        <HeroMedia image={hotel.heroImage} videos={hotel.heroVideos} alt={hotel.name} />
         <div
           style={{
             position: 'absolute',
